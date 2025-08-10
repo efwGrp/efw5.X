@@ -34,7 +34,7 @@
 * [helloAzure](samples/helloAzure)
 
 
-# [API](elp/e/api.md)
+# [API](help/e/api.md)
 
 
 # They use our products
