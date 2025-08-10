@@ -2,103 +2,103 @@
 
 ## Properties
 
-* [efw.properties](help/e/properties.web.md)
-* [batch.properties](help/e/properties.batch.md)
+* [efw.properties](properties.web.md)
+* [batch.properties](properties.batch.md)
 
 ## Resources
 
-* [Context XML](help/e/resources.context.md)
+* [Context XML](resources.context.md)
 
 ## JSP
 
 | Categories | Items  |||||
 |---|---|---|---|---|---|
-| Base Tags | [Client](help/e/tag.client.md) | [Part](help/e/tag.part.md) | [Attr](help/e/tag.attr.md) | [Msg](help/e/tag.msg.md) | [Prop](help/e/tag.prop.md) |
-| Additional Tags | [elFinder](help/e/tag.elfinder.md) | [Chart](help/e/tag.chart.md) | [Barcode](help/e/tag.barcode.md) |  |  |
-| Tag Params | [msg:](help/e/tag.attr.msg.md) | [prop:](help/e/tag.attr.prop.md) |  |  |  |
-| Functions | [Efw](help/e/api_efw_function.md) | [alert](help/e/efw.dialog.alert.md) | [wait](help/e/efw.dialog.wait.md) |  |  |
-| Attributes | [data-format](help/e/api_data_format.md) | [data-shortcut](help/e/api_data_shortcut.md) |  |  |  |
+| Base Tags | [Client](tag.client.md) | [Part](tag.part.md) | [Attr](tag.attr.md) | [Msg](tag.msg.md) | [Prop](tag.prop.md) |
+| Additional Tags | [elFinder](tag.elfinder.md) | [Chart](tag.chart.md) | [Barcode](tag.barcode.md) |  |  |
+| Tag Params | [msg:](tag.attr.msg.md) | [prop:](tag.attr.prop.md) |  |  |  |
+| Functions | [Efw](api_efw_function.md) | [alert](efw.dialog.alert.md) | [wait](efw.dialog.wait.md) |  |  |
+| Attributes | [data-format](api_data_format.md) | [data-shortcut](api_data_shortcut.md) |  |  |  |
 
 ## Outside SQL
 
-* [SQL XML](help/e/api_sql.md)
+* [SQL XML](api_sql.md)
 
 ## Outside Mail
 
-* [Mail XML](help/e/api_mail.md)
+* [Mail XML](api_mail.md)
 
 ## Multi Language
 
-* [Language XML](help/e/api_language.md)
+* [Language XML](api_language.md)
 
 ## Event JS
 
-* [Web Event](help/e/api_webevent.md)
-* [Batch Event](help/e/api_batchevent.md)
-* [Rest Event](help/e/api_restevent.md)
-* [Global Event](help/e/api_global.md) fires on system loading.
+* [Web Event](api_webevent.md)
+* [Batch Event](api_batchevent.md)
+* [Rest Event](api_restevent.md)
+* [Global Event](api_global.md) fires on system loading.
 
 ### Modules
 
 | Modules | Attributes/Functions |||||
 |---|---|---|---|---|---|
-| `[global]` | [`_eventfolder`](help/e/global._eventfolder.md) | [`_isdebug`](help/e/global._isdebug.md) | [`load`](help/e/global.load.md) |
-| `efw` | [`register`](help/e/efw.register.md) | [`contains`](help/e/efw.contains.md) |  |  |  |
-| `cmd` | [`execute`](help/e/cmd.execute.md) |  |  |  |  |
-| `file` | [`get`](help/e/file.get.md) | [`list`](help/e/file.list.md) | [`isFile`](help/e/file.isFile.md) | [`isFolder`](help/e/file.isFolder.md) | [`makeFile`](help/e/file.makeFile.md) |
-|  | [`exists`](help/e/file.exists.md) | [`duplicate`](help/e/file.duplicate.md) | [`rename`](help/e/file.rename.md) | [`remove`](help/e/file.remove.md) | [`makeDir`](help/e/file.makeDir.md) |
-|  | [`readAllLines`](help/e/file.readAllLines.md) | [`writeAllLines`](help/e/file.writeAllLines.md) | [`getStorageFolder`](help/e/file.getStorageFolder.md) | [`saveUploadFiles`](help/e/file.saveUploadFiles.md) | [`saveSingleUploadFile`](help/e/file.saveSingleUploadFile.md) |
-|  | [`readAllBytes`](help/e/file.readAllBytes.md) | [`writeAllBytes`](help/e/file.writeAllBytes.md) | [`getTempFileName`](help/e/file.getTempFileName.md) | [`move`](help/e/file.move.md) |  |
+| `[global]` | [`_eventfolder`](global._eventfolder.md) | [`_isdebug`](global._isdebug.md) | [`load`](global.load.md) |
+| `efw` | [`register`](efw.register.md) | [`contains`](efw.contains.md) |  |  |  |
+| `cmd` | [`execute`](cmd.execute.md) |  |  |  |  |
+| `file` | [`get`](file.get.md) | [`list`](file.list.md) | [`isFile`](file.isFile.md) | [`isFolder`](file.isFolder.md) | [`makeFile`](file.makeFile.md) |
+|  | [`exists`](file.exists.md) | [`duplicate`](file.duplicate.md) | [`rename`](file.rename.md) | [`remove`](file.remove.md) | [`makeDir`](file.makeDir.md) |
+|  | [`readAllLines`](file.readAllLines.md) | [`writeAllLines`](file.writeAllLines.md) | [`getStorageFolder`](file.getStorageFolder.md) | [`saveUploadFiles`](file.saveUploadFiles.md) | [`saveSingleUploadFile`](file.saveSingleUploadFile.md) |
+|  | [`readAllBytes`](file.readAllBytes.md) | [`writeAllBytes`](file.writeAllBytes.md) | [`getTempFileName`](file.getTempFileName.md) | [`move`](file.move.md) |  |
 | `absfile` | All APIs are the same as the `file` object, except that the path parameter is an absolute one.  |||||
-| `rest` | [`get`](help/e/rest.get.md) | [`post`](help/e/rest.post.md) | [`put`](help/e/rest.put.md) | [`delete`](help/e/rest.delete.md) | [`getStatus`](help/e/rest.getStatus.md) |
-| `event` | [`fire`](help/e/event.fire.md) | [`load`](help/e/event.load.md) | [`get`](help/e/event.get.md) |  |  |
-| `db` | [`select`](help/e/db.select.md) | [`change`](help/e/db.change.md) |  |  |  |
-|  | [`commit`](help/e/db.commit.md) | [`_rollback`](help/e/db.rollback.md) | [`commitAll`](help/e/db.commitAll.md) | [`rollbackAll`](help/e/db.rollbackAll.md) |  |
+| `rest` | [`get`](rest.get.md) | [`post`](rest.post.md) | [`put`](rest.put.md) | [`delete`](rest.delete.md) | [`getStatus`](rest.getStatus.md) |
+| `event` | [`fire`](event.fire.md) | [`load`](event.load.md) | [`get`](event.get.md) |  |  |
+| `db` | [`select`](db.select.md) | [`change`](db.change.md) |  |  |  |
+|  | [`commit`](db.commit.md) | [`_rollback`](db.rollback.md) | [`commitAll`](db.commitAll.md) | [`rollbackAll`](db.rollbackAll.md) |  |
 |  | All transaction functions, as a default, do not need to be called explicitly.  |||||
-| `mail` | [`send`](help/e/mail.send.md) |  |  |  |  |
-| `properties` | [`get`](help/e/properties.get.md) |  |  |  |  |
-| `session` | [`get`](help/e/session.get.md) | [`set`](help/e/session.set.md) | [`create`](help/e/session.create.md) | [`invalidate`](help/e/session.invalidate.md) |  |
-| `cookie` | [`get`](help/e/cookie.get.md) | [`set`](help/e/cookie.set.md) |  |  |  |
-| `request` | [`get`](help/e/request.get.md) |  |  |  |  |
-| `{ any }` | [`format`](help/e/any.format.md) | [`parse`](help/e/any.parse.md) | [`debug`](help/e/any.debug.md) |  |  |
-| `{ Date }` | [`getYears`](help/e/Date.getYears.md) |  |  |  |  |
-| `{ String }` | [`base64Encode`](help/e/String.base64Encode.md) | [`base64EncodeURI`](help/e/String.base64EncodeURI.md) | [`base64Decode`](help/e/String.base64Decode.md) |  |  |
-| `Math` | [`ROUND`](help/e/Math.ROUND.md) | [`ROUNDUP`](help/e/Math.ROUNDUP.md) | [`ROUNDDOWN`](help/e/Math.ROUNDDOWN.md) |  |  |
+| `mail` | [`send`](mail.send.md) |  |  |  |  |
+| `properties` | [`get`](properties.get.md) |  |  |  |  |
+| `session` | [`get`](session.get.md) | [`set`](session.set.md) | [`create`](session.create.md) | [`invalidate`](session.invalidate.md) |  |
+| `cookie` | [`get`](cookie.get.md) | [`set`](cookie.set.md) |  |  |  |
+| `request` | [`get`](request.get.md) |  |  |  |  |
+| `{ any }` | [`format`](any.format.md) | [`parse`](any.parse.md) | [`debug`](any.debug.md) |  |  |
+| `{ Date }` | [`getYears`](Date.getYears.md) |  |  |  |  |
+| `{ String }` | [`base64Encode`](String.base64Encode.md) | [`base64EncodeURI`](String.base64EncodeURI.md) | [`base64Decode`](String.base64Decode.md) |  |  |
+| `Math` | [`ROUND`](Math.ROUND.md) | [`ROUNDUP`](Math.ROUNDUP.md) | [`ROUNDDOWN`](Math.ROUNDDOWN.md) |  |  |
 
 
 ### Classes
 
 | Classes | Attributes/Functions |||||
 |---|---|---|---|---|---|
-| `BinaryReader` | [`new`](help/e/BinaryReader.new.md) | [`readAllLines`](help/e/BinaryReader.readAllLines.md) | [`loopAllLines`](help/e/BinaryReader.loopAllLines.md) |  |  |
-| `BinaryWriter` | [`new`](help/e/BinaryWriter.new.md) | [`writeAllLines`](help/e/BinaryWriter.writeAllLines.md) | [`writeLine`](help/e/BinaryWriter.writeLine.md) | [`close`](help/e/BinaryWriter.close.md) |  |
-| `CSVReader` | [`new`](help/e/CSVReader.new.md) | [`readAllLines`](help/e/CSVReader.readAllLines.md) | [`loopAllLines`](help/e/CSVReader.loopAllLines.md) |  |  |
-| `CSVWriter` | [`new`](help/e/CSVWriter.new.md) | [`writeAllLines`](help/e/CSVWriter.writeAllLines.md) | [`writeLine`](help/e/CSVWriter.writeLine.md) | [`close`](help/e/CSVWriter.close.md) |  |
-| `Excel` | [`new`](help/e/excel.new.md) | [`save`](help/e/excel.save.md) | [`close`](help/e/excel.close.md) | [`getSheetNames`](help/e/excel.getSheetNames.md) |  |
-|  | [`createSheet`](help/e/excel.createSheet.md) | [`removeSheet`](help/e/excel.removeSheet.md) | [`setSheetOrder`](help/e/excel.setSheetOrder.md) | [`setActiveSheet`](help/e/excel.setActiveSheet.md) |  |
-|  | [`getMaxRow`](help/e/excel.getMaxRow.md) | [`setPrintArea`](help/e/excel.setPrintArea.md) | [`showSheet`](help/e/excel.showSheet.md) | [`hideSheet`](help/e/excel.hideSheet.md) | [`zoomSheet`](help/e/excel.zoomSheet.md) |
-|  | [`addRow`](help/e/excel.addRow.md) | [`delRow`](help/e/excel.delRow.md) | [`showRow`](help/e/excel.showRow.md) | [`hideRow`](help/e/excel.hideRow.md) |  |
-|  |  |  | [`showCol`](help/e/excel.showCol.md) | [`hideCol`](help/e/excel.hideCol.md) |  |
-|  | [`getArray`](help/e/excel.getArray.md) | [`getSingle`](help/e/excel.getSingle.md) | [`getValue`](help/e/excel.getValue.md) | [`setCell`](help/e/excel.setCell.md) | [`setLink`](help/e/excel.setLink.md) |
-|  | [`isEncircled`](help/e/excel.isEncircled.md) | [`encircle`](help/e/excel.encircle.md) | [`addShape`](help/e/excel.addShape.md) | [`addShapeInRange`](help/e/excel.addShapeInRange.md) | [`replacePicture`](help/e/excel.replacePicture.md) |
-| `Pdf` | [`new`](help/e/pdf.new.md) | [`save`](help/e/pdf.save.md) | [`close`](help/e/pdf.close.md) | [`setField`](help/e/excel.setField.md) |  |
-|  | [`html2pdf`](help/e/pdf.html2pdf.md) | [`getFontNames`](help/e/pdf.getFontNames.md) |
-| `Record` | [`new`](help/e/record.new.md) |  |  |  |  |
-|  | [`seek`](help/e/record.seek.md) | [`sort`](help/e/record.sort.md) | [`map`](help/e/record.map.md) | [`makeAllKeysUpperCase`](help/e/record.makeAllKeysUpperCase.md) | [`makeAllKeysLowerCase`](help/e/record.makeAllKeysLowerCase.md) |
-|  | [`getArray`](help/e/record.getArray.md) | [`getSingle`](help/e/record.getSingle.md) | [`getValue`](help/e/record.getValue.md) | [`length`](help/e/record.length.md) |  |
-| `Result` | [`new`](help/e/result.new.md) | [`concat`](help/e/result.concat.md) |  |  |  |
-|  | [`runat`](help/e/result.runat.md) | [`remove`](help/e/result.remove.md) | [`append`](help/e/result.append.md) | [`withdata`](help/e/result.withdata.md) |  |
-|  | [`show`](help/e/result.show.md) | [`hide`](help/e/result.hide.md) | [`enable`](help/e/result.enable.md) | [`disable`](help/e/result.disable.md) |  |
-|  | [`focus`](help/e/result.focus.md) | [`highlight`](help/e/result.highlight.md) | [`attach`](help/e/result.attach.md) | [`deleteAfterDownload`](help/e/result.deleteAfterDownload.md) | [`saveas`](help/e/result.saveas.md) |  |
-|  | [`confirm`](help/e/result.confirm.md) | [`alert`](help/e/result.alert.md) | [`preview`](help/e/result.preview.md) | [`eval`](help/e/result.eval.md) | [`navigate`](help/e/result.navigate.md) |
-| `Batch` | [`new`](help/e/batch.new.md) | [`concat`](help/e/batch.concat.md) |  |  |  |
-|  | [`log`](help/e/batch.log.md) | [`echo`](help/e/batch.echo.md) | [`exit`](help/e/batch.exit.md) |  |  |
-| `Threads` | [`new`](help/e/threads.new.md) | [`add`](help/e/threads.add.md) | [`run`](help/e/threads.run.md) |  |  |
+| `BinaryReader` | [`new`](BinaryReader.new.md) | [`readAllLines`](BinaryReader.readAllLines.md) | [`loopAllLines`](BinaryReader.loopAllLines.md) |  |  |
+| `BinaryWriter` | [`new`](BinaryWriter.new.md) | [`writeAllLines`](BinaryWriter.writeAllLines.md) | [`writeLine`](BinaryWriter.writeLine.md) | [`close`](BinaryWriter.close.md) |  |
+| `CSVReader` | [`new`](CSVReader.new.md) | [`readAllLines`](CSVReader.readAllLines.md) | [`loopAllLines`](CSVReader.loopAllLines.md) |  |  |
+| `CSVWriter` | [`new`](CSVWriter.new.md) | [`writeAllLines`](CSVWriter.writeAllLines.md) | [`writeLine`](CSVWriter.writeLine.md) | [`close`](CSVWriter.close.md) |  |
+| `Excel` | [`new`](excel.new.md) | [`save`](excel.save.md) | [`close`](excel.close.md) | [`getSheetNames`](excel.getSheetNames.md) |  |
+|  | [`createSheet`](excel.createSheet.md) | [`removeSheet`](excel.removeSheet.md) | [`setSheetOrder`](excel.setSheetOrder.md) | [`setActiveSheet`](excel.setActiveSheet.md) |  |
+|  | [`getMaxRow`](excel.getMaxRow.md) | [`setPrintArea`](excel.setPrintArea.md) | [`showSheet`](excel.showSheet.md) | [`hideSheet`](excel.hideSheet.md) | [`zoomSheet`](excel.zoomSheet.md) |
+|  | [`addRow`](excel.addRow.md) | [`delRow`](excel.delRow.md) | [`showRow`](excel.showRow.md) | [`hideRow`](excel.hideRow.md) |  |
+|  |  |  | [`showCol`](excel.showCol.md) | [`hideCol`](excel.hideCol.md) |  |
+|  | [`getArray`](excel.getArray.md) | [`getSingle`](excel.getSingle.md) | [`getValue`](excel.getValue.md) | [`setCell`](excel.setCell.md) | [`setLink`](excel.setLink.md) |
+|  | [`isEncircled`](excel.isEncircled.md) | [`encircle`](excel.encircle.md) | [`addShape`](excel.addShape.md) | [`addShapeInRange`](excel.addShapeInRange.md) | [`replacePicture`](excel.replacePicture.md) |
+| `Pdf` | [`new`](pdf.new.md) | [`save`](pdf.save.md) | [`close`](pdf.close.md) | [`setField`](excel.setField.md) |  |
+|  | [`html2pdf`](pdf.html2pdf.md) | [`getFontNames`](pdf.getFontNames.md) |
+| `Record` | [`new`](record.new.md) |  |  |  |  |
+|  | [`seek`](record.seek.md) | [`sort`](record.sort.md) | [`map`](record.map.md) | [`makeAllKeysUpperCase`](record.makeAllKeysUpperCase.md) | [`makeAllKeysLowerCase`](record.makeAllKeysLowerCase.md) |
+|  | [`getArray`](record.getArray.md) | [`getSingle`](record.getSingle.md) | [`getValue`](record.getValue.md) | [`length`](record.length.md) |  |
+| `Result` | [`new`](result.new.md) | [`concat`](result.concat.md) |  |  |  |
+|  | [`runat`](result.runat.md) | [`remove`](result.remove.md) | [`append`](result.append.md) | [`withdata`](result.withdata.md) |  |
+|  | [`show`](result.show.md) | [`hide`](result.hide.md) | [`enable`](result.enable.md) | [`disable`](result.disable.md) |  |
+|  | [`focus`](result.focus.md) | [`highlight`](result.highlight.md) | [`attach`](result.attach.md) | [`deleteAfterDownload`](result.deleteAfterDownload.md) | [`saveas`](result.saveas.md) |  |
+|  | [`confirm`](result.confirm.md) | [`alert`](result.alert.md) | [`preview`](result.preview.md) | [`eval`](result.eval.md) | [`navigate`](result.navigate.md) |
+| `Batch` | [`new`](batch.new.md) | [`concat`](batch.concat.md) |  |  |  |
+|  | [`log`](batch.log.md) | [`echo`](batch.echo.md) | [`exit`](batch.exit.md) |  |  |
+| `Threads` | [`new`](threads.new.md) | [`add`](threads.add.md) | [`run`](threads.run.md) |  |  |
 
 # References
 
 * [JavaScript reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference)
-* [jQuery Selectors API](help/e/jQuery_Selectors_API.md)
+* [jQuery Selectors API](jQuery_Selectors_API.md)
 * [Graaljs Java Interoperability](https://www.graalvm.org/latest/reference-manual/js/JavaInteroperability/)
 * [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference)
 * [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
