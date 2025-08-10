@@ -45,8 +45,8 @@ https://tomcat.apache.org/tomcat-9.0-doc/config/filter.html
 - eventモジュールのload、get関数
 - dbモジュールのcommit、rollback、commitAll、rollbackAll関数
 
-OK event.load
-OK event.get
+help OK event.load
+help OK event.get
 help OK result.preview
 
 
