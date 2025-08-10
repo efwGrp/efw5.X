@@ -10,7 +10,7 @@
 * [Efw 是什么？](https://qiita.com/changkejun/private/844953846f3e6bed4a9d)
 * [Efw 安全相关说明](https://qiita.com/changkejun/private/70184f814ff52f862d91)
 * [构建高负载 Tomcat 环境](https://qiita.com/changkejun/private/fb325ed0a9d81f3bf5f0)
-* [Efw5中的变化](help/c/changed_in_5.md)
+* [Efw5中的变更](help/c/changed_in_5.md)
 
 ## [示例](help/c/samples.md)
 
