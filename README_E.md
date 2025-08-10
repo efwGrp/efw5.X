@@ -10,6 +10,8 @@
 * [What is Efw?](https://qiita.com/changkejun/items/844953846f3e6bed4a9d)
 * [Efw Security Related Explanation](https://qiita.com/changkejun/items/70184f814ff52f862d91)
 * [Build a High Loads Tomcat Environment](https://qiita.com/changkejun/items/fb325ed0a9d81f3bf5f0)
+* [What changed in Efw5?](help/e/changed_in_5.md)
+
 
 ## [Samples](help/e/samples.md)
 

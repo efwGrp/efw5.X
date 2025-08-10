@@ -11,6 +11,7 @@
 * [Efwのセキュリティ関連の説明](https://qiita.com/changkejun/items/5e10a96e0b1efce8653e)
 * [高負荷対応のTomcat環境構築](https://qiita.com/changkejun/items/1d850b109f8b26381268)
 * [EFWコーディング規約](https://qiita.com/Victory963/items/ec028606e382a1d3a174)
+* [Efw5の変化箇所](help/e/changed_in_5.md)
 
 ## [サンプル](help/j/samples.md)
 
