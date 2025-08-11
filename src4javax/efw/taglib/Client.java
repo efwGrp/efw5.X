@@ -1,4 +1,4 @@
-/**** efw4.X Copyright 2019 efwGrp ****/
+/**** efw5.X Copyright 2025 efwGrp ****/
 package efw.taglib;
 
 import java.io.IOException;
@@ -23,6 +23,7 @@ public final class Client extends TagSupport{
 	private String theme="base";
 	private String lang="en";//en cn jp
 	private String major="4";
+	private String addVue="false";
 	/**
 	 * ベースURLを取得する。
 	 * @return ベースURL。
@@ -94,6 +95,21 @@ public final class Client extends TagSupport{
 		this.major = Util.translateAttr(pageContext,major);
 	}
 	/**
+	 * vue取込要否フラグを取得する
+	 * @return vue取込要否フラグ
+	 */
+	public String getAddVue() {
+		return addVue;
+	}
+	/**
+	 * vue取込要否フラグを設定する。
+	 * @param addVue vue取込要否フラグ
+	 */
+	public void setAddVue(String addVue) {
+		this.addVue = Util.translateAttr(pageContext,addVue);
+	}
+
+	/**
 	 * リクエストに言語を記録する属性名。
 	 */
 	public static final String EFW_I18N_LANG="EFW_I18N_LANG";
@@ -112,7 +128,7 @@ public final class Client extends TagSupport{
 				out.print("<link type=\"text/css\" rel=\"stylesheet\" href=\""+baseurl+"/jquery-ui/jquery-ui.structure.min.css?v="+v+"\">\n");
 				out.print("<link type=\"text/css\" rel=\"stylesheet\" href=\""+baseurl+"/jquery-ui/themes/"+theme+"/theme.css?v="+v+"\">\n");
 				out.print("<script type=\"text/javascript\" charset=\"UTF-8\" src=\""+baseurl+"/jquery-ui/jquery-ui.min.js?v="+v+"\"></script>\n");
-				out.print("<script type=\"text/javascript\" charset=\"UTF-8\" src=\""+baseurl+"/efw/efw.dialog.jquery-ui.js?v="+v+"\"></script>\n");
+				out.print("<script type=\"text/javascript\" charset=\"UTF-8\" src=\""+baseurl+"/efw/EfwDialogJqueryUI.js?v="+v+"\"></script>\n");
 			}else if("bootstrap".equals(mode)){
 				out.print("<link type=\"text/css\" rel=\"stylesheet\" href=\""+baseurl+"/bootstrap/"+major+"/css/bootstrap.min.css?v="+v+"\">\n");
 				if ("4".equals(major)||"5".equals(major)){//4 5
@@ -120,18 +136,21 @@ public final class Client extends TagSupport{
 				}else {//3 2
 					out.print("<script type=\"text/javascript\" charset=\"UTF-8\" src=\""+baseurl+"/bootstrap/"+major+"/js/bootstrap.min.js?v="+v+"\"></script>\n");
 				}
-				out.print("<script type=\"text/javascript\" charset=\"UTF-8\" src=\""+baseurl+"/efw/efw.dialog.bootstrap.js?v="+v+"\"></script>\n");
+				out.print("<script type=\"text/javascript\" charset=\"UTF-8\" src=\""+baseurl+"/efw/EfwDialogBootstrap.js?v="+v+"\"></script>\n");
 				out.print("<link type=\"text/css\" rel=\"stylesheet\" href=\""+baseurl+"/bootstrap/icons/bootstrap-icons.css?v="+v+"\">\n");
+			}
+			if ("true".equals(addVue)) {
+				out.print("<script type=\"text/javascript\" charset=\"UTF-8\" src=\""+baseurl+"/efw/vue.global.prod.js?v="+v+"\"></script>\n");
 			}
 			out.print("<link type=\"text/css\" rel=\"stylesheet\" href=\""+baseurl+"/efw/efw.css?v="+v+"\">\n");
 			out.print("<script type=\"text/javascript\" charset=\"UTF-8\" src=\""+baseurl+"/efw/easytimer.min.js?v="+v+"\"></script>\n");
 			out.print("<script type=\"text/javascript\" charset=\"UTF-8\" src=\""+baseurl+"/efw/js.cookie.min.js?v="+v+"\"></script>\n");
-			out.print("<script type=\"text/javascript\" charset=\"UTF-8\" src=\""+baseurl+"/efw/efw.client.messages.jsp?lang="+lang+"&v="+v+"\"></script>\n");
-			out.print("<script type=\"text/javascript\" charset=\"UTF-8\" src=\""+baseurl+"/efw/efw.client.format.js?v="+v+"\"></script>\n");
-			out.print("<script type=\"text/javascript\" charset=\"UTF-8\" src=\""+baseurl+"/efw/efw.client.inputbehavior.js?v="+v+"\"></script>\n");
-			out.print("<script type=\"text/javascript\" charset=\"UTF-8\" src=\""+baseurl+"/efw/efw.client.js?v="+v+"\"></script>\n");
+			out.print("<script type=\"text/javascript\" charset=\"UTF-8\" src=\""+baseurl+"/efw/EfwClientMessages.jsp?lang="+lang+"&v="+v+"\"></script>\n");
+			out.print("<script type=\"text/javascript\" charset=\"UTF-8\" src=\""+baseurl+"/efw/EfwClientFormat.js?v="+v+"\"></script>\n");
+			out.print("<script type=\"text/javascript\" charset=\"UTF-8\" src=\""+baseurl+"/efw/EfwClientInputBehavior.js?v="+v+"\"></script>\n");
+			out.print("<script type=\"text/javascript\" charset=\"UTF-8\" src=\""+baseurl+"/efw/EfwClient.js?v="+v+"\"></script>\n");
 			
-			out.print("<script type=\"text/javascript\" charset=\"UTF-8\" src=\""+baseurl+"/efw/efw.js?v="+v+"\"></script>\n");
+			out.print("<script type=\"text/javascript\" charset=\"UTF-8\" src=\""+baseurl+"/efw/EfwRoot.js?v="+v+"\"></script>\n");
 			out.print("<script type=\"text/javascript\">\n");
 			out.print("	efw.baseurl = \""+baseurl+"\";\n");
 			out.print("	efw.lang = \""+lang+"\";\n");
@@ -153,6 +172,7 @@ public final class Client extends TagSupport{
 		theme="base";
 		lang="en";
 		major="4";
+		addVue="false";
 		return SKIP_BODY;
 	}
 }

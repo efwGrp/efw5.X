@@ -92,7 +92,7 @@ class Efw extends Debuggable{
 		//イベント取得できない場合、エラーを画面に出す。該当エラーはよく発生する。
 		let ev=event.get(eventId);
 		//if event is not loaded or it is in debug mode
-		if (ev==null||(ev.from=="file" && _isdebug)){
+		if (ev==null){
 			ev=event.load(eventId);
 		}
 		if (ev==null){
@@ -105,7 +105,12 @@ class Efw extends Debuggable{
 			return messages.translate(JSON.stringify(result),lang);
 		}else{
 			service=ev.service;
-			semaphore=ev.semaphore;
+			if (ev.service!=null && ev.service.max!=null && ev.service.max>-1 ){
+				semaphore=Packages.efw.script.ScriptManager.getSemaphore(eventId,ev.service.max);
+			}else{
+				semaphore=null;
+			}
+
 		}
 	
 		try{
@@ -187,9 +192,9 @@ class Efw extends Debuggable{
 						//default global object is ok
 					}else{
 						// you should do something if the comment is printed out.
-						Packages.efw.framework.runtimeWLog("[" + i + "] is a variable without var keyword.It is Not Recommended.");
+						Packages.efw.framework.runtimeWLog("[" + i + "] is not an event js name but is added to Global. It is not recommended.");
 					}
-				}				
+				}
 			}
 		}
 	}
@@ -210,7 +215,7 @@ class Efw extends Debuggable{
 		try{
 			let ev=event.get(eventId);
 			//if event is not loaded or it is in debug mode
-			if (ev==null||(ev.from=="file" && _isdebug)){
+			if (ev==null){
 				ev=event.load(eventId);
 			}
 			if (ev==null){
@@ -270,7 +275,7 @@ class Efw extends Debuggable{
 		//イベント取得できない場合、エラーを画面に出す。該当エラーはよく発生する。
 		let ev=event.get(eventId);
 		//if event is not loaded or it is in debug mode
-		if (ev==null||(ev.from=="file" && _isdebug)){
+		if (ev==null){
 			ev=event.load(eventId);
 		}
 		if (ev==null){

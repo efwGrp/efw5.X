@@ -6,14 +6,35 @@ The EFW function is established to call server events from JSP in AJAX. It is no
 
 ```html
 <input type="button" value="Send" onclick="Efw('helloWorld_sendMessage')">
+<script>
+	//you can use await to get return from Efw function.
+	var myData=await Efw("helloworld_sendMessage");
+	//or use promise then to get it.
+	var myData;
+	Efw("helloworld_sendMessage").then(function(data){
+		myData=data;
+	});
+	//myData is {a:1,b:2};
+	////////////////////////////////////
+	//the following source is event js.
+	/*
+	var helloWorld_sendMessage={};
+	helloWorld_sendMessage.paramsFormat={};
+	helloWorld_sendMessage.fire(params){
+		return new Result()
+		.alert("here")
+		.provide({a:1,b:2});
+	}
+	*/
+</script>
 ```
 
 ## API
 
-| Calling |
-|---|
-| `Efw ( eventId )` |
-| `Efw ( eventId, manualParams )` |
+| Calling | Returning |
+|---|---|
+| `Efw ( eventId )` | `void` \| `any` |
+| `Efw ( eventId, manualParams )` |`void` \| `any` |
 
 | Parameter | Type | Description |
 |---|---|---|

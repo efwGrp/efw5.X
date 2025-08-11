@@ -264,7 +264,7 @@ public final class ScriptManager {
 	public static ReentrantLock getLocker() {
 		return locker;
 	}
-	private static HashMap<String,Semaphore> semaphores=new HashMap<String,Semaphore>();
+	private static HashMap<String,HashMap<String, Object>> semaphores=new HashMap<String,HashMap<String, Object>>();
 	/**
 	 * 
 	 * @param eventId
@@ -272,11 +272,21 @@ public final class ScriptManager {
 	 * @return
 	 */
 	public static synchronized Semaphore getSemaphore(String eventId,int max) {
-		Semaphore ret;
+		HashMap<String, Object> ret;
 		if ((ret=semaphores.get(eventId))==null) {
-			semaphores.put(eventId, ret=new java.util.concurrent.Semaphore(max));
+			HashMap<String, Object> created=new  HashMap<String, Object> ();
+			created.put("eventId", eventId);
+			created.put("max", max);
+			created.put("semaphore", new java.util.concurrent.Semaphore(max));
+			semaphores.put(eventId, ret=created);
+		}else {
+			int premax=(int)ret.get("max");
+			if (premax!=max) {
+				ret.put("max", max);
+				ret.put("semaphore", new java.util.concurrent.Semaphore(max));
+			}
 		}
-		return ret;
+		return (Semaphore)ret.get("semaphore");
 	}
 }
 //https://docs.oracle.com/cd/F44923_01/jdk/21/docs/reference-manual/js/ScriptEngine/#prerequisite

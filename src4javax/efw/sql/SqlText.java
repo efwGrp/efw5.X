@@ -1,15 +1,14 @@
-/**** efw4.X Copyright 2019 efwGrp ****/
+/**** efw5.X Copyright 2025 efwGrp ****/
 package efw.sql;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Map;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import efw.DynamicParamIsNotExistsException;
-
-import java.util.regex.Matcher;
 /**
  * sqlタグにifタグに分割されるSql文の部品を表すクラス。
  * @author Chang Kejun

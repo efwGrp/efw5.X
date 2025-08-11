@@ -1,4 +1,4 @@
-/**** efw4.X Copyright 2019 efwGrp ****/
+/**** efw5.X Copyright 2025 efwGrp ****/
 package efw.sql;
 
 import java.io.StringWriter;

@@ -6,14 +6,36 @@ EFW関数は、JSPからAJAXでサーバーイベントを呼び出すために�
 
 ```html
 <input type="button" value="送信" onclick="Efw('helloWorld_sendMessage')">
+<script>
+	//Efw 関数からの戻り値を取得するには、await を使用できます。
+	var myData=await Efw("helloworld_sendMessage");
+	//または promise then を使用して取得します。
+	var myData;
+	Efw("helloworld_sendMessage").then(function(data){
+		myData=data;
+	});
+	//myData is {a:1,b:2};
+	////////////////////////////////////
+	//次のソースはイベント js です。
+	/*
+	var helloWorld_sendMessage={};
+	helloWorld_sendMessage.paramsFormat={};
+	helloWorld_sendMessage.fire(params){
+		return new Result()
+		.alert("here")
+		.provide({a:1,b:2});
+	}
+	*/
+</script>
+
 ```
 
 ## API
 
-| 呼び出し |
-|---|
-| `Efw ( eventId )` |
-| `Efw ( eventId, manualParams )` |
+| 呼び出し | 戻り値 |
+|---|--|
+| `Efw ( eventId )` | `void` \| `any` |
+| `Efw ( eventId, manualParams )` | `void` \| `any` |
 
 | パラメータ | 型 | 説明 |
 |---|---|---|

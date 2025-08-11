@@ -472,8 +472,6 @@
 <entry key="ElFinder_kindVideoOGG">Ogg 视频</entry>
 <entry key="ElFinder_downloadFileList">下载文件列表</entry>
 
-<!--RuntimeExceptions-->
-<entry key="NewKeywordWasForgottenException">New关键字被遗忘了。</entry>
 <!-- test -->
 <entry key="here">这里</entry>
 </properties>

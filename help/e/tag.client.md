@@ -20,6 +20,7 @@ To develop with Efw, you need to import several `.js` and `.css` files into your
 | `theme` | No | `"base"` | Sets the theme for jQuery UI. |
 | `major` | No | `"4"` | Sets the major version for Bootstrap (2, 3, 4, or 5). |
 | `lang` | No | `"en"` | Sets the language. Language files should be located in the multi-language folder. |
+| `addVue` | No | `"false"` | The flag to import Vue. |
 
 ##### jQuery UI Themes
 

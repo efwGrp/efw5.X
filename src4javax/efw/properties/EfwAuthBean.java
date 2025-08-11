@@ -1,3 +1,4 @@
+/**** efw5.X Copyright 2025 efwGrp ****/
 package efw.properties;
 
 import java.util.HashMap;
@@ -86,7 +87,7 @@ public final class EfwAuthBean{
 	/**
 	 * クライアントメッセージのURL。
 	 */
-	public String clientMessagesUrl="efw.client.messages.jsp";
+	public String clientMessagesUrl="EfwClientMessages.jsp";
 	/**
 	 * elFinderクライアントメッセージのURL。
 	 */

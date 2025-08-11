@@ -1,4 +1,4 @@
-/**** efw4.X Copyright 2019 efwGrp ****/
+/**** efw5.X Copyright 2025 efwGrp ****/
 package efw.taglib;
 
 import java.io.IOException;
@@ -158,14 +158,14 @@ public final class Chart extends TagSupport implements DynamicAttributes {
 			}
 			if ("googlechart".equals(mode)) {
 				out.print("<script type=\"text/javascript\" charset=\"UTF-8\" src=\"https://www.gstatic.com/charts/loader.js\"></script>");
-				out.print("<script type=\"text/javascript\" charset=\"UTF-8\" src=\"efw/efw.chart.googlechart.js?v="+v+"\"></script>");
+				out.print("<script type=\"text/javascript\" charset=\"UTF-8\" src=\"efw/EfwClientChartGL.js?v="+v+"\"></script>");
 				out.print("<div id=\""+id+"\" style=\"width:"+width+";height:"+height+";\" "+temp+"></div>");
 				out.print("<script>"
 						+ "var "+id+";"
 						+ "$(function(){"+id+"=new EfwClientChartGL(\""+id+"\",\""+data+"\",\""+type+"\",\""+version+"\","+setoptions+");"+id+".draw();});</script>");
 			}else if ("chartjs".equals(mode)) {
 				out.print("<script type=\"text/javascript\" charset=\"UTF-8\" src=\"chart/Chart.min.js?v="+v+"\"></script>");
-				out.print("<script type=\"text/javascript\" charset=\"UTF-8\" src=\"efw/efw.chart.chartjs.js?v="+v+"\"></script>");
+				out.print("<script type=\"text/javascript\" charset=\"UTF-8\" src=\"efw/EfwClientChartJS.js?v="+v+"\"></script>");
 				out.print("<div id=\""+id+"\" style=\"width:"+width+";height:"+height+";\" "+temp+"><canvas></canvas></div>");
 				out.print("<script>"
 						+ "var "+id+";"

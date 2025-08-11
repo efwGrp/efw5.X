@@ -18,8 +18,9 @@
 | `baseurl` | 否 | `"."` | Web 应用程序的基础 URL。如果你的页面不在根文件夹中，则这是必需的。 |
 | `mode` | 否 | `"jquery-ui"` | 设置 UI 框架为 `"jquery-ui"` 或 `"bootstrap"`。 |
 | `theme` | 否 | `"base"` | 设置 jQuery UI 的主题。 |
-| `major` | No | `"4"` | 设置 Bootstrap 的主版本 (2, 3, 4, or 5)。 |
-| `lang` | No | `"en"` | 设置语言。语言文件应位于多语言文件夹中。 |
+| `major` | 否 | `"4"` | 设置 Bootstrap 的主版本 (2, 3, 4, or 5)。 |
+| `lang` | 否 | `"en"` | 设置语言。语言文件应位于多语言文件夹中。 |
+| `addVue` | 否 | `"false"` |导入 Vue 的标志。|
 
 ##### jQuery UI 主题
 

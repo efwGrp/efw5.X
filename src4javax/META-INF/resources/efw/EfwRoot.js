@@ -1,4 +1,4 @@
-/**** efw4.X Copyright 2019 efwGrp ****/
+/**** efw5.X Copyright 2025 efwGrp ****/
 /**
  * efw framework client library
  * @author Chang Kejun
@@ -15,30 +15,36 @@ var Efw = function(eventId,manualParams) {
 	if(eventId!=undefined){
 		var eventParams={"eventId":eventId};
 		eventParams.manualParams=manualParams;
-		(new EfwClient()).fire(eventParams);
+		//it will return result.data
+		return (new EfwClient()).fire(eventParams);
 	}
 };
-
-Efw.prototype.baseurl = ".";
-Efw.prototype.dialog = null;
-Efw.prototype.messages = null;
-Efw.prototype.lang = "en"; 
 // /////////////////////////////////////////////////////////////////////////////
 // The initialization of system.
 // /////////////////////////////////////////////////////////////////////////////
 /**
- * efw is an instance of Efw.<br>
+ * efw is a rename of EfwClass.<br>
  * all using of framework base functions in your program should be started from
  * it.
  */
-var efw = new Efw();
+class EfwRoot{
+	static baseurl = ".";
+	static mode = "";
+	static theme = "";
+	static major = "";
+	static dialog = null;
+	static messages = null;
+	static lang = "en";
+	static isDownloading =false;
+}
+var efw = EfwRoot;
 /**
  * Add events for input behaviors.
  */
 $(function() {
 	//--behavior---------------------------------------------------------------
-	window.onhelp = efwClientInputBehavior.prototype.unDohelp;
-	$(document).on("keydown",efwClientInputBehavior.prototype.DoShortcut);
+	window.onhelp = EfwClientInputBehavior.unDohelp;
+	$(document).on("keydown",EfwClientInputBehavior.doShortcut);
 	var strSelectors=":text,:password,:radio,:checkbox,select,textarea"
 		+",[type='search']"
 		+",[type='tel']"
@@ -66,10 +72,10 @@ $(function() {
 		+",[type='FILE']"
 //color range hidden submit image reset button
 	;
-	$(document).on("focus",strSelectors,efwClientInputBehavior.prototype.DoFocus);
-	$(document).on("blur",strSelectors,efwClientInputBehavior.prototype.DoBlur);
-	$(document).on("focus","[data-format]",efwClientInputBehavior.prototype.DoFormatFocus);
-	$(document).on("blur","[data-format]",efwClientInputBehavior.prototype.DoFormatBlur);
+	$(document).on("focus",strSelectors,EfwClientInputBehavior.doFocus);
+	$(document).on("blur",strSelectors,EfwClientInputBehavior.doBlur);
+	$(document).on("focus","[data-format]",EfwClientInputBehavior.doFormatFocus);
+	$(document).on("blur","[data-format]",EfwClientInputBehavior.doFormatBlur);
 	//--loading----------------------------------------------------------------
 	$("body").append("<div id='efw_loading'></div>");
 	$("#efw_loading").hide();
@@ -83,7 +89,5 @@ $(function() {
 	efw.dialog=new EfwDialog();
 	//--messages---------------------------------------------------------------
 	efw.messages=new EfwClientMessages();
-	//--isDownloading----------------------------------------------------------
-	efw.isDownloading=false;
 });
 

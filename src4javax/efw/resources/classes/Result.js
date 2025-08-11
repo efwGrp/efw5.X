@@ -25,6 +25,10 @@ class Result extends Debuggable{
 	 */
 	values = [];
 	/**
+	 * The object to keep return data.
+	 */
+	data = null;
+	/**
 	 * The array to keep threadLogs.
 	 */
 	threadLogs = null;
@@ -397,6 +401,13 @@ class Result extends Debuggable{
 		if (!this.actions.preview)this.actions.preview={};
 		this.actions.preview.file = filePath;
 		this.actions.preview.isAbs=isAbs;
+		return this;
+	}
+	/**
+	 * The function to set data as return value for client Efw function.
+	 */
+	provide(data){
+		this.data=data;
 		return this;
 	}
 	/**

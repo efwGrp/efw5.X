@@ -472,8 +472,6 @@
 <entry key="ElFinder_kindVideoOGG">Ogg movie</entry>
 <entry key="ElFinder_downloadFileList">Download file list</entry>
 
-<!--RuntimeExceptions-->
-<entry key="NewKeywordWasForgottenException">New keyword was forgotten.</entry>
 <!-- test -->
 <entry key="here">here</entry>
 </properties>

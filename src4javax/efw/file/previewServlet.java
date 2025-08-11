@@ -1,4 +1,4 @@
-/**** efw4.X Copyright 2024 efwGrp ****/
+/**** efw5.X Copyright 2025 efwGrp ****/
 package efw.file;
 
 import java.io.BufferedInputStream;

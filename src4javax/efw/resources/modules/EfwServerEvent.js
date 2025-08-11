@@ -32,7 +32,7 @@ class EfwServerEvent extends Debuggable{
 		let result=new Result();
 		if (server==undefined){
 			let ev=EfwServerEvent.get(eventId);
-			if (ev==null||ev.from=="file"){
+			if (ev==null){
 				ev=EfwServerEvent.load(eventId);
 			}
 			result=ev.fire(params);
@@ -86,46 +86,10 @@ class EfwServerEvent extends Debuggable{
 			}
 		}
 		//--------------------
-		/**
-		 * This function to set eventinfo about service
-		 */
-		function setService(eventId,ev,preService,preSemaphore){
-			if (ev.service!=null){
-				if (preService==null)preService={};
-				if(ev.service.max!=null && ev.service.max>-1 && ev.service.max!=preService.max){
-					ev.semaphore=Packages.efw.script.ScriptManager.getSemaphore(eventId,ev.service.max);
-				}else if(ev.service.max==preService.max){
-					ev.semaphore=preSemaphore;
-				}
-			}else{
-				ev.semaphore=null;
-			}
-		}
-		//--------------------
 		try {
-			//if the event hasnot be loaded, load it.
-			if(!EfwServerEvent.get(eventId)){
+			//in debug mode ,if the event hasnot be loaded, load it.
+			if(!EfwServerEvent.get(eventId) && _isdebug){
 				load(_eventfolder + "/" + eventId + ".js");
-				let ev=EfwServerEvent.get(eventId);
-				if (ev){
-					ev.lastModified =""+absfile.get(_eventfolder + "/" + eventId + ".js").lastModified;
-					if(eventId!="global")setService(eventId,ev,null,null);
-					ev.from="file";//from is checked in fire event, so it must be the last step.
-				}
-			}else if (_isdebug){
-				let org=EfwServerEvent.get(eventId);
-				let orgLastModified=""+org.lastModified;
-				let evLastModified=""+absfile.get(_eventfolder + "/" + eventId + ".js").lastModified;
-				if (orgLastModified!=evLastModified){
-					EfwServerEvent.#remove(eventId);
-					load(_eventfolder + "/" + eventId + ".js");
-					let ev=EfwServerEvent.get(eventId);
-					if (ev){
-						ev.lastModified =absfile.get(_eventfolder + "/" + eventId + ".js").lastModified;
-						setService(eventId,ev,org.service,org.semaphore);
-						ev.from="file";//from is checked in fire event, so it must be the last step.
-					}
-				}
 			}
 		}catch(e){
 			if (e instanceof Error)e=""+e;

@@ -1,3 +1,4 @@
+/**** efw5.X Copyright 2025 efwGrp ****/
 package efw;
 
 import java.io.BufferedReader;
