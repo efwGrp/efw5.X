@@ -44,3 +44,7 @@ https://tomcat.apache.org/tomcat-9.0-doc/config/filter.html
 - eventモジュールのload、get関数
 - dbモジュールのcommit、rollback、commitAll、rollbackAll関数
 
+## ５、Vue連携のための機能調整
+- Resultクラスにprovide関数を設ける
+- クライアントEfw関数の戻り値を設ける
+- ClientタグにaddVue属性を設ける

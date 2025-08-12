@@ -43,3 +43,8 @@ https://tomcat.apache.org/tomcat-9.0-doc/config/filter.html
 ## 4. Promotion of some internal functions
 - load and get functions in the event module
 - commit, rollback, commitAll, and rollbackAll functions in the db module
+
+## 5. Functionality adjustments for Vue integration
+- Add a provide function to the Result class
+- Add a return value for the client Efw function
+- Add an addVue attribute to the Client tag
