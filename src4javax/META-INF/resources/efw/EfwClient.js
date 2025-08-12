@@ -45,7 +45,7 @@ class EfwClient{
 			//auto show values
 			if (result.values) this.#showValues(eventId, result.values);
 			//auto do actions
-			if (result.actions) this.#showActions(eventId, result.actions, downloadUrl, previewUrl);
+			if (result.actions) this._showActions(eventId, result.actions, downloadUrl, previewUrl);
 			//it will return result.data
 			return result.data;
 		} catch (e) {
@@ -76,7 +76,7 @@ class EfwClient{
 				}),
 				success: function(result) {
 					if (result.actions != null) {
-						self.#showActions(eventId, result.actions);
+						self._showActions(eventId, result.actions);
 						if (result.actions.error == null) {
 							reject({});
 						}else{
@@ -330,7 +330,7 @@ class EfwClient{
 			if (e.errorTitle){
 				throw e;
 			}else{
-				this.#showActions(eventId, { "error": { "clientMessageId": "ParamsFormatErrorException", "params": { "eventId": eventId } } });
+				this._showActions(eventId, { "error": { "clientMessageId": "ParamsFormatErrorException", "params": { "eventId": eventId } } });
 				throw { errorTitle: "Params format error", errorData: e };
 			}
 		}
@@ -477,19 +477,20 @@ class EfwClient{
 			if (e.errorTitle){
 				throw e;
 			}else{
-				this.#showActions(eventId, { "error": { "clientMessageId": "ResultValuesErrorException", "params": { "eventId": eventId } } });
+				this._showActions(eventId, { "error": { "clientMessageId": "ResultValuesErrorException", "params": { "eventId": eventId } } });
 				throw { errorTitle: "Result values error", errorData: e };
 			}
 		}
 	}
 	/**
 	 * The internal function to show actions to web.
+	 * It is used by elfinder js so can not close it in the class.
 	 * @param eventId
 	 * @param actions
 	 * @param downloadUrl
 	 * @param previewUrl
 	 */
-	#showActions(eventId, actions, downloadUrl, previewUrl) {
+	_showActions(eventId, actions, downloadUrl, previewUrl) {
 		try {
 			if ((actions instanceof Array)) throw "The return actions must be an object.";
 			//-------------------------------------------------------------------------
@@ -569,7 +570,7 @@ class EfwClient{
 			if (e.errorTitle){
 				throw e;
 			}else{
-				this.#showActions(eventId, { "error": { "clientMessageId": "ResultActionsErrorException", "params": { "eventId": eventId } } });
+				this._showActions(eventId, { "error": { "clientMessageId": "ResultActionsErrorException", "params": { "eventId": eventId } } });
 				throw { errorTitle: "Result actions error", errorData: e };
 			}
 		}
