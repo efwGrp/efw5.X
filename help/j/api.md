@@ -36,7 +36,7 @@
 * [Web Event](api_webevent.md)
 * [Batch Event](api_batchevent.md)
 * [Rest Event](api_restevent.md)
-* [Global Event](api_global.md) (システム読み込み時に実行される)
+* [Global Event](api_global.md) (イベントが走る前に実行される)
 
 ### モジュール
 

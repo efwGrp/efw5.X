@@ -36,7 +36,7 @@
 * [Web 事件](api_webevent.md)
 * [批量事件](api_batchevent.md)
 * [Rest 事件](api_restevent.md)
-* [全局事件](api_global.md) 在系统加载时触发。
+* [全局事件](api_global.md) 在事件执行前触发。
 
 ### 模块
 
