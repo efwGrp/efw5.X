@@ -5,6 +5,7 @@
 - globalモジュールloadWithGlobalPool関数とloadWithNewGlobal関数を破棄する。
 - Efw関数とモジュールをJavaScriptクラスで再作成する。
 - Efwクラスが未初期化エラーNewKeywordWasForgottenExceptionを廃棄する。
+- Threadsクラスを破棄する。
 
 ## ２、マルチContextに変更
 - リリースモード時、イベントjsフォルダの全ソースをメモリにロードする。

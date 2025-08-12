@@ -70,7 +70,6 @@ public final class ScriptManager {
 			sb.append(ScriptManager.loadResource("efw/resources/classes/CSVWriter.js"));
 			sb.append(ScriptManager.loadResource("efw/resources/classes/BinaryReader.js"));
 			sb.append(ScriptManager.loadResource("efw/resources/classes/BinaryWriter.js"));
-			sb.append(ScriptManager.loadResource("efw/resources/classes/Threads.js"));
 			sb.append(ScriptManager.loadResource("efw/resources/classes/Pdf.js"));
 
 			sb.append(ScriptManager.loadResource("efw/resources/elfinder/ElfinderEvent.js"));

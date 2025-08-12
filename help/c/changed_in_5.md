@@ -5,6 +5,7 @@
 - 废弃了全局模块的 loadWithGlobalPool 和 loadWithNewGlobal 函数。
 - 将 Efw 函数和模块重新创建为 JavaScript 类。
 - 废弃了 Efw 类未初始化时出现的 NewKeywordWasForgottenException 错误。
+- 废弃了Threads类。
 
 ## 2. 更改为多上下文
 - 在发布模式下，事件 js 文件夹中的所有源代码都会加载到内存中。

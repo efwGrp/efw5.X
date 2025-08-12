@@ -5,6 +5,7 @@
 - Discarded the global module's loadWithGlobalPool and loadWithNewGlobal functions.
 - Recreated Efw functions and modules with JavaScript classes.
 - Discarded the NewKeywordWasForgottenException error when the Efw class was not initialized.
+- Discarded Threads classÅB
 
 ## 2. Changed to multi-context
 - In release mode, all source code in the event js folder is loaded into memory.
