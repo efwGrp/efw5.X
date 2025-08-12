@@ -65,7 +65,6 @@
 | `{ String }` | [`base64Encode`](String.base64Encode.md) | [`base64EncodeURI`](String.base64EncodeURI.md) | [`base64Decode`](String.base64Decode.md) |  |  |
 | `Math` | [`ROUND`](Math.ROUND.md) | [`ROUNDUP`](Math.ROUNDUP.md) | [`ROUNDDOWN`](Math.ROUNDDOWN.md) |  |  |
 
-
 ### クラス
 
 | クラス | 属性/関数 |  |  |  |  |
@@ -93,8 +92,6 @@
 |  | [`confirm`](result.confirm.md) | [`alert`](result.alert.md) | [`preview`](result.preview.md) | [`eval`](result.eval.md) | [`navigate`](result.navigate.md) |
 | `Batch` | [`new`](batch.new.md) | [`concat`](batch.concat.md) |  |  |  |
 |  | [`log`](batch.log.md) | [`echo`](batch.echo.md) | [`exit`](batch.exit.md) |  |  |
-| `Threads` | [`new`](threads.new.md) | [`add`](threads.add.md) | [`run`](threads.run.md) |  |  |
-
 
 # 参考
 

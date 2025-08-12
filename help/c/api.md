@@ -92,7 +92,6 @@
 |  | [`confirm`](result.confirm.md) | [`alert`](result.alert.md) | [`preview`](result.preview.md) | [`eval`](result.eval.md) | [`navigate`](result.navigate.md) |
 | `Batch` | [`new`](batch.new.md) | [`concat`](batch.concat.md) |  |  |  |
 |  | [`log`](batch.log.md) | [`echo`](batch.echo.md) | [`exit`](batch.exit.md) |  |  |
-| `Threads` | [`new`](threads.new.md) | [`add`](threads.add.md) | [`run`](threads.run.md) |  |  |
 
 # 参考
 
