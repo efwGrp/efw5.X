@@ -16,7 +16,7 @@
 | 基本标签 | [Client](tag.client.md) | [Part](tag.part.md) | [Attr](tag.attr.md) | [Msg](tag.msg.md) | [Prop](tag.prop.md) |
 | 附加标签 | [elFinder](tag.elfinder.md) | [Chart](tag.chart.md) | [Barcode](tag.barcode.md) |  |  |
 | 标签参数 | [msg:](tag.attr.msg.md) | [prop:](tag.attr.prop.md) |  |  |  |
-| 函数 | [Efw](api_efw_function.md) | [alert](efw.dialog.alert.md) | [wait](efw.dialog.wait.md) |  |  |
+| 函数 | [Efw](api_efw_function.md) | [alert](efw.dialog.alert.md) | [wait](efw.dialog.wait.md) | [wait](efw.dialog.preview.md) |  |
 | 属性 | [data-format](api_data_format.md) | [data-shortcut](api_data_shortcut.md) |  |  |  |
 
 ## 外置SQL

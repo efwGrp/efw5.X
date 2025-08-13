@@ -16,7 +16,7 @@
 | Base Tags | [Client](tag.client.md) | [Part](tag.part.md) | [Attr](tag.attr.md) | [Msg](tag.msg.md) | [Prop](tag.prop.md) |
 | Additional Tags | [elFinder](tag.elfinder.md) | [Chart](tag.chart.md) | [Barcode](tag.barcode.md) |  |  |
 | Tag Params | [msg:](tag.attr.msg.md) | [prop:](tag.attr.prop.md) |  |  |  |
-| Functions | [Efw](api_efw_function.md) | [alert](efw.dialog.alert.md) | [wait](efw.dialog.wait.md) |  |  |
+| Functions | [Efw](api_efw_function.md) | [alert](efw.dialog.alert.md) | [wait](efw.dialog.wait.md) | [wait](efw.dialog.preview.md) |  |
 | Attributes | [data-format](api_data_format.md) | [data-shortcut](api_data_shortcut.md) |  |  |  |
 
 ## Outside SQL
