@@ -16,7 +16,7 @@
 | 基本タグ | [Client](tag.client.md) | [Part](tag.part.md) | [Attr](tag.attr.md) | [Msg](tag.msg.md) | [Prop](tag.prop.md) |
 | 追加タグ | [elFinder](tag.elfinder.md) | [Chart](tag.chart.md) | [Barcode](tag.barcode.md) |  |  |
 | タグパラメータ | [msg:](tag.attr.msg.md) | [prop:](tag.attr.prop.md) |  |  |  |
-| 関数 | [Efw](api_efw_function.md) | [alert](efw.dialog.alert.md) | [wait](efw.dialog.wait.md) | [wait](efw.dialog.preview.md) |  |
+| 関数 | [Efw](api_efw_function.md) | [alert](efw.dialog.alert.md) | [wait](efw.dialog.wait.md) | [preview](efw.dialog.preview.md) |  |
 | 属性 | [data-format](api_data_format.md) | [data-shortcut](api_data_shortcut.md) |  |  |  |
 
 ## 外だしSQL
