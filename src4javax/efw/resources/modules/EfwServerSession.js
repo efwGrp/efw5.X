@@ -23,11 +23,43 @@ class EfwServerSession extends Debuggable{
 			if (valueType == "string"){
 				if (value.indexOf("JSON:")==0){
 					value=JSON.parse(value.substring(5));
+					value=EfwServerSession.#restoreDate(value);
 				}
 			}
 		}
 		return value;
 	}
+	/**
+	 * To recreate Date object after JSON parse
+	 */
+	static #restoreDate(obj){
+		if (obj==null) return obj;
+		let oClone;
+		switch (obj.constructor) {
+		case String:
+			if (obj.indexOf("T")==10&&obj.indexOf("Z")==23&&obj.indexOf("-")==4){
+				oClone=new Date(obj);
+				return oClone;
+			}else{
+				return obj;
+			}
+		case Array:
+			oClone = [];
+			for (let sProp in obj) {
+				oClone[sProp] = EfwServerSession.#restoreDate(obj[sProp]); 
+			}
+			return oClone;
+		case Object:
+			oClone = {};
+			for (let sProp in obj) {
+				oClone[sProp] = EfwServerSession.#restoreDate(obj[sProp]); 
+			}
+			return oClone;
+		default:
+			return obj;
+		}
+	}
+	
 	/**
 	 * The function to set data in session.
 	 * 
