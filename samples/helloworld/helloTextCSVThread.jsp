@@ -15,7 +15,6 @@ Run2はCSVReaderの例です。<br>
 例３、ロット別でIOを分ける例 <button onclick="Efw('helloTextCSVThread_submit',{mode:'3'})">Run1</button> <button onclick="Efw('helloTextCSVThread_submit2',{mode:'3'})">Run2</button><br>
 例４、ライターの使いまわし例 <button onclick="Efw('helloTextCSVThread_submit',{mode:'4'})">Run1</button> <button onclick="Efw('helloTextCSVThread_submit2',{mode:'4'})">Run2</button><br>
 例５、バッファーの配列をID別に分ける例 <button onclick="Efw('helloTextCSVThread_submit',{mode:'5'})">Run1</button> <button onclick="Efw('helloTextCSVThread_submit2',{mode:'5'})">Run2</button><br>
-例６、読み込みマルチスレッドの例 <button onclick="Efw('helloTextCSVThread_submit',{mode:'6'})">Run1</button> <button onclick="Efw('helloTextCSVThread_submit2',{mode:'6'})">Run2</button><br>
 <br>
 <efw:elfinder id="elfinder1" home="text&csv"/>
 </BODY>

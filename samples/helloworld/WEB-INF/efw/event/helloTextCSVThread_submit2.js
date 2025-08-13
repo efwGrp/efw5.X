@@ -122,55 +122,6 @@ helloTextCSVThread_submit2.fire=function(params){
 		    }
 		    buffer={};//バッファーを初期化する
 		}
-	
-	//例６、マルチスレッドの例
-	}else if (params.mode=="6"){////////////////////////////////////////////////
-		var buffer={};//ロット処理のバッファーマップ、ID別の配列を格納する
-		var hasDataFlag=false;//データ有無フラグ
-		var lot=0;
-		var offsetBytes=0;
-		var offsetRows=0;
-		do{
-			hasDataFlag=false;//初期値false
-			var threads = new Threads(2);
-			threads.add({from:0+lot*10 ,run:makeCsvBuffer,offsetBytes:offsetBytes,offsetRows:offsetRows,isMax:false});
-			threads.add({from:5+lot*10 ,run:makeCsvBuffer,offsetBytes:offsetBytes,offsetRows:offsetRows,isMax:true});
-			var obj=threads.run().seek("isMax","eq",true).getSingle();//マルチスレッドを実行する
-			offsetBytes=obj.offsetBytes;
-			offsetRows=obj.offsetRows;
-			saveBuffer();//バッファーを保存する。データある場合、hasDataFlagをtrueにする
-			lot++;
-		}while(hasDataFlag);
-		//------以下はCSVバッファーを作成する関数
-		function makeCsvBuffer(){
-			var csvreader=new CSVReader(
-			    "text&csv/myText3.csv",//読み取るファイル
-			    ",", "\"",
-			    "MS932",//項目ごとの文字コード
-				this.from,//読み込み開始レコード番号
-				5//読み込み件数、ロット件数/スレッド数
-			).loopAllLines(function(fields,index){//全部レコードを１件ずつ読み取る
-			    //もしID別の配列がまだ存在しない場合、その配列を初期化する
-				helloTextCSVThread_submit2.mylocker.lock();//ロックする
-			    	if (buffer[fields[0]]==null)buffer[fields[0]]=[];
-			    	buffer[fields[0]].push(fields);
-				helloTextCSVThread_submit2.mylocker.unlock();//ロック解除する
-			});
-		}
-		//------以下はバッファー保存用の内部関数
-		function saveBuffer(){
-		    for (var key in buffer){
-		        if (key=="debug")continue;
-		        var ary=buffer[key];
-		        var writer=new CSVWriter("text&csv/seperated/"+key+".csv", ",", "\"", "MS932");
-		        for(var i=0;i<ary.length;i++){
-		             writer.writeLine(ary[i]);//レコードを書き込む
-		        }
-		        writer.close();
-		    	hasDataFlag=true;
-		    }
-		    buffer={};//バッファーを初期化する
-		}
 	}
 	return ret.alert("The file has been seperated.");
 	

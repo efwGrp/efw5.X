@@ -127,52 +127,6 @@ helloTextCSVThread_submit.fire=function(params){
 		    }
 		    buffer={};//バッファーを初期化する
 		}
-	
-	//例６、マルチスレッドの例
-	}else if (params.mode=="6"){////////////////////////////////////////////////
-		var buffer={};//ロット処理のバッファーマップ、ID別の配列を格納する
-		var hasDataFlag=false;//データ有無フラグ
-		var lot=0;
-		do{
-			hasDataFlag=false;//初期値false
-			var threads = new Threads(2);
-			threads.add({from:0+lot*10 ,run:makeCsvBuffer});
-			threads.add({from:5+lot*10 ,run:makeCsvBuffer});
-			threads.run();//マルチスレッドを実行する
-			saveBuffer();//バッファーを保存する。データある場合、hasDataFlagをtrueにする
-			lot++;
-		}while(hasDataFlag);
-		//------以下はCSVバッファーを作成する関数
-		function makeCsvBuffer(){
-			new BinaryReader(
-			    "text&csv/myText.txt",//読み取るファイル
-			    [10,10],//項目ごとのバイト数
-			    ["MS932","MS932"],//項目ごとの文字コード
-			    20,//１つレイアウトのバイト数
-				this.from,//読み込み開始レコード番号
-				5//読み込み件数、ロット件数/スレッド数
-			).loopAllLines(function(fields,index){//全部レコードを１件ずつ読み取る
-			    //もしID別の配列がまだ存在しない場合、その配列を初期化する
-				helloTextCSVThread_submit.mylocker.lock();//ロックする
-			    	if (buffer[fields[0]]==null)buffer[fields[0]]=[];
-			    	buffer[fields[0]].push(fields);
-				helloTextCSVThread_submit.mylocker.unlock();//ロック解除する
-			});
-		}
-		//------以下はバッファー保存用の内部関数
-		function saveBuffer(){
-		    for (var key in buffer){
-		        if (key=="debug")continue;
-		        var ary=buffer[key];
-		        var writer=new CSVWriter("text&csv/seperated/"+key+".csv", ",", "\"", "MS932");
-		        for(var i=0;i<ary.length;i++){
-		             writer.writeLine(ary[i]);//レコードを書き込む
-		        }
-		        writer.close();
-		    	hasDataFlag=true;
-		    }
-		    buffer={};//バッファーを初期化する
-		}
 	}
 	return ret.alert("The file has been seperated.");
 	
