@@ -20,7 +20,7 @@
 - TXTReader 类
 - keepConnectionAlive 用于在长时间运行执行期间维持会话
 
-## 3. 由于相关软件的变更而停用
+## 4. 由于相关软件的变更而停用
 - Client 标签的 nopromise 属性
 ```
 终止对 IE 和 IE 模式的支持
@@ -41,11 +41,11 @@
 https://tomcat.apache.org/tomcat-9.0-doc/config/filter.html
 ```
 
-## 4. 部分内部函数升级
+## 5. 部分内部函数升级
 - event 模块中的 load 和 get 函数
 - db 模块中的 commit、rollback、commitAll 和 rollbackAll 函数
 
-## 5. 针对 Vue 集成的功能调整
+## 6. 针对 Vue 集成的功能调整
 - 为 Result 类添加 provide 函数
 - 为客户端 Efw 函数添加返回值
 - 为 Client 标签添加 addVue 属性

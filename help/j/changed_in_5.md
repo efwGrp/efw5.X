@@ -4,7 +4,7 @@
 - サポートするJavaScriptバージョンはES6(2015)からES15(2024)に更新される。
 - globalモジュールloadWithGlobalPool関数とloadWithNewGlobal関数を破棄する。
 - Efw関数とモジュールをJavaScriptクラスで再作成する。
-- Efwクラスの未初期化エラーNewKeywordWasForgottenExceptionを防止する。
+- Efwクラスの未初期化エラーNewKeywordWasForgottenExceptionを破棄する。
 - Threadsクラスを破棄する。
 
 ## ２、マルチContextに変更

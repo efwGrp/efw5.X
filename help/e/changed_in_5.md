@@ -20,7 +20,7 @@
 - TXTReader class
 - keepConnectionAlive for maintaining sessions during long-running execution
 
-## 3. Ability to terminate due to changes in related software
+## 4. Ability to terminate due to changes in related software
 - nopromise attribute of Client tag
 ```
 End of support for IE and IE mode
@@ -41,11 +41,11 @@ Please address this issue using Tomcat's CORS settings.
 https://tomcat.apache.org/tomcat-9.0-doc/config/filter.html
 ```
 
-## 4. Promotion of some internal functions
+## 5. Promotion of some internal functions
 - load and get functions in the event module
 - commit, rollback, commitAll, and rollbackAll functions in the db module
 
-## 5. Functionality adjustments for Vue integration
+## 6. Functionality adjustments for Vue integration
 - Add a provide function to the Result class
 - Add a return value for the client Efw function
 - Add an addVue attribute to the Client tag
