@@ -4,7 +4,7 @@
 <TITLE>test</TITLE>
 <META CONTENT="TEXT/HTML;CHARSET=UTF-8" HTTP-EQUIV="CONTENT-TYPE">
 <script type="text/javascript" charset="UTF-8" src="./efw/jquery.min.js"></script>
-<script type="text/javascript" charset="UTF-8" src="./efw/efw.client.format.js"></script>
+<script type="text/javascript" charset="UTF-8" src="./efw/EfwClientFormat.js"></script>
 
 <script>
 	function setChar1Options(options){
@@ -30,12 +30,12 @@
 		</table>
 	</td>
 	<td>
-		<script type="text/javascript" charset="UTF-8" src="https://www.gstatic.com/charts/loader.js"></script><script type="text/javascript" charset="UTF-8" src="efw/efw.chart.googlechart.js"></script><div id="char1" style="width:400px;height:300px;" ></div><script>var char1;$(function(){char1=new EfwClientChartGL("char1","chart1_data","pie","current",setChar1Options);char1.draw();});</script>
+		<script type="text/javascript" charset="UTF-8" src="https://www.gstatic.com/charts/loader.js"></script><script type="text/javascript" charset="UTF-8" src="efw/EfwClientChartGL.js"></script><div id="char1" style="width:400px;height:300px;" ></div><script>var char1;$(function(){char1=new EfwClientChartGL("char1","chart1_data","pie","current",setChar1Options);char1.draw();});</script>
 	</td>
 	<td id="char1Options"></td></tr>
 	<tr>
 	<td>
-		<script type="text/javascript" charset="UTF-8" src="chart/Chart.min.js"></script><script type="text/javascript" charset="UTF-8" src="efw/efw.chart.chartjs.js"></script><div id="char2" style="width:400px;height:300px;" ><canvas></canvas></div><script>var char2;$(function(){char2=new EfwClientChartJS("char2","chart1_data","pie","current",setChar2Options);char2.draw();});</script>
+		<script type="text/javascript" charset="UTF-8" src="chart/Chart.min.js"></script><script type="text/javascript" charset="UTF-8" src="efw/EfwClientChartJS.js"></script><div id="char2" style="width:400px;height:300px;" ><canvas></canvas></div><script>var char2;$(function(){char2=new EfwClientChartJS("char2","chart1_data","pie","current",setChar2Options);char2.draw();});</script>
 	</td>
 	<td id="char2Options"></td></tr></table>
 	

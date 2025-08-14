@@ -4,7 +4,7 @@
 <TITLE>test</TITLE>
 <META CONTENT="TEXT/HTML;CHARSET=UTF-8" HTTP-EQUIV="CONTENT-TYPE">
 <script type="text/javascript" charset="UTF-8" src="./efw/jquery.min.js"></script>
-<script type="text/javascript" charset="UTF-8" src="./efw/efw.client.format.js"></script>
+<script type="text/javascript" charset="UTF-8" src="./efw/EfwClientFormat.js"></script>
 </HEAD>
 <BODY>
 	<table><tr>
@@ -20,14 +20,14 @@
 		</table>
 	</td>
 	<td>
-		<script type="text/javascript" charset="UTF-8" src="https://www.gstatic.com/charts/loader.js"></script><script type="text/javascript" charset="UTF-8" src="efw/efw.chart.googlechart.js"></script><div id="char1" style="width:400px;height:300px;" ></div><script>var char1;$(function(){char1=new EfwClientChartGL("char1","chart1_data","column","current",null);char1.draw();});</script>
+		<script type="text/javascript" charset="UTF-8" src="https://www.gstatic.com/charts/loader.js"></script><script type="text/javascript" charset="UTF-8" src="efw/EfwClientChartGL.js"></script><div id="char1" style="width:400px;height:300px;" ></div><script>var char1;$(function(){char1=new EfwClientChartGL("char1","chart1_data","column","current",null);char1.draw();});</script>
 	</td>
 	<td>
 		<div id="char2" style="width:400px;height:300px;" ></div><script>var char2;$(function(){char2=new EfwClientChartGL("char2","chart1_data","pie","current",null);char2.draw();});</script>
 	</td></tr>
 	<tr>
 	<td>
-		<script type="text/javascript" charset="UTF-8" src="chart/Chart.min.js"></script><script type="text/javascript" charset="UTF-8" src="efw/efw.chart.chartjs.js"></script><div id="char3" style="width:400px;height:300px;" ><canvas></canvas></div><script>var char3;$(function(){char3=new EfwClientChartJS("char3","chart1_data","column","current",null);char3.draw();});</script>
+		<script type="text/javascript" charset="UTF-8" src="chart/Chart.min.js"></script><script type="text/javascript" charset="UTF-8" src="efw/EfwClientChartJS.js"></script><div id="char3" style="width:400px;height:300px;" ><canvas></canvas></div><script>var char3;$(function(){char3=new EfwClientChartJS("char3","chart1_data","column","current",null);char3.draw();});</script>
 	</td>
 	<td>
 		<div id="char4" style="width:400px;height:300px;" ></div><script>var char4;$(function(){char4=new EfwClientChartJS("char4","chart1_data","pie","current",null);char4.draw();});</script>
