@@ -3,12 +3,14 @@ package efw;
 import java.io.Closeable;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Method;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Properties;
 import java.util.logging.Level;
 
 import javax.script.ScriptException;
@@ -36,7 +38,20 @@ public final class framework {
 	/**
 	 * バージョンを表す。
 	 */
-	public static final String version="5.00.000jakarta";// change it when releasing jar.
+	public static final String version = getPOMVersion();
+	/**
+	 * pom.propertiesからバージョン情報を取得する。
+	 * @return POMバージョン
+	 */
+	private static String getPOMVersion() {
+        try (InputStream inputStream = framework.class.getResourceAsStream("/META-INF/maven/io.github.efwgrp/efw/pom.properties")) {
+        	Properties properties = new Properties();
+            properties.load(inputStream);
+            return properties.getProperty("version");
+        }catch(Exception e) {
+        	return "ERROR";
+        }
+	}
 	/**
 	 * webHome
 	 */
