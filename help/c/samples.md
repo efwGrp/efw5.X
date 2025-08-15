@@ -7,7 +7,7 @@
 * 图表标签测试 ([helloworld/helloChart.jsp](../../samples/helloworld/helloChart.jsp))
 * 二维码标签测试([helloworld/helloBarcode.jsp](../../samples/helloworld/helloBarcode.jsp))
 * Excel 类测试 ([helloworld/helloExcel.jsp](../../samples/helloworld/helloExcel.jsp))
-* 文本文件处理测试 ([helloworld/helloTextCSVThread.jsp](../../samples/helloworld/helloTextCSVThread.jsp))
+* 文本文件处理测试 ([helloworld/helloTextCSV.jsp](../../samples/helloworld/helloTextCSV.jsp))
 * 数据库模块测试 ([helloworld/helloDB.jsp](../../samples/helloworld/helloDB.jsp))
 * 电子邮件模块测试 ([helloworld/helloMail.jsp](../../samples/helloworld/helloMail.jsp))
 * efw 多语言支持 ([helloworld/helloI18n.jsp](../../samples/helloworld/helloI18n.jsp))

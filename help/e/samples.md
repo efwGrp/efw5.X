@@ -7,7 +7,7 @@
 * Chart tag test ([helloworld/helloChart.jsp](../../samples/helloworld/helloChart.jsp))
 * QR code tag test ([helloworld/helloBarcode.jsp](../../samples/helloworld/helloBarcode.jsp))
 * Excel class test ([helloworld/helloExcel.jsp](../../samples/helloworld/helloExcel.jsp))
-* Text file processing test ([helloworld/helloTextCSVThread.jsp](../../samples/helloworld/helloTextCSVThread.jsp))
+* Text file processing test ([helloworld/helloTextCSV.jsp](../../samples/helloworld/helloTextCSV.jsp))
 * DB module test ([helloworld/helloDB.jsp](../../samples/helloworld/helloDB.jsp))
 * Email module test ([helloworld/helloMail.jsp](../../samples/helloworld/helloMail.jsp))
 * Multilingual support for efw ([helloworld/helloI18n.jsp](../../samples/helloworld/helloI18n.jsp))

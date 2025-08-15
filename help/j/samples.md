@@ -7,7 +7,7 @@
 * チャートタグのテスト ([helloworld/helloChart.jsp](../../samples/helloworld/helloChart.jsp))
 * QRコードタグのテスト ([helloworld/helloBarcode.jsp](../../samples/helloworld/helloBarcode.jsp))
 * Excelクラスのテスト ([helloworld/helloExcel.jsp](../../samples/helloworld/helloExcel.jsp))
-* テキストファイル処理のテスト ([helloworld/helloTextCSVThread.jsp](../../samples/helloworld/helloTextCSVThread.jsp))
+* テキストファイル処理のテスト ([helloworld/helloTextCSV.jsp](../../samples/helloworld/helloTextCSV.jsp))
 * dbモジュールのテスト ([helloworld/helloDB.jsp](../../samples/helloworld/helloDB.jsp))
 * メールモジュールのテスト ([helloworld/helloMail.jsp](../../samples/helloworld/helloMail.jsp))
 * efwの多言語対応 ([helloworld/helloI18n.jsp](../../samples/helloworld/helloI18n.jsp))

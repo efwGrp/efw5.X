@@ -1,19 +1,20 @@
-var helloTextCSVThread_submit2={};
-helloTextCSVThread_submit2.paramsFormat={
+var helloTextCSV_submit={};
+helloTextCSV_submit.paramsFormat={
 	mode:null,
 };
-helloTextCSVThread_submit2.mylocker = new java.util.concurrent.locks.ReentrantLock();//マルチスレッドバッファーを操作するためのロッカー
-helloTextCSVThread_submit2.fire=function(params){
+helloTextCSV_submit.mylocker = new java.util.concurrent.locks.ReentrantLock();//マルチスレッドバッファーを操作するためのロッカー
+helloTextCSV_submit.fire=function(params){
 	file.remove("text&csv/seperated");
 	file.makeDir("text&csv/seperated");
 	var ret=new Result().eval("elfinder1.setHome('text&csv/seperated')");
 	
 	//例１、各種制限を考慮せず無邪気な例
 	if (params.mode=="1"){//////////////////////////////////////////////////////
-		var ary=new CSVReader(
-		    "text&csv/myText3.csv",//読み取るファイル
-		    ",", "\"",
-		    "MS932"//項目ごとの文字コード
+		var ary=new BinaryReader(
+		    "text&csv/myText.txt",//読み取るファイル
+		    [10,10],//項目ごとのバイト数
+		    ["MS932","MS932"],//項目ごとの文字コード
+		    20//１つレイアウトのバイト数
 		).readAllLines();//全部レコードを一括で読み取る
 		for(var i=0;i<ary.length;i++){
 		    //IDで保存先を特定する。
@@ -23,10 +24,11 @@ helloTextCSVThread_submit2.fire=function(params){
 		}
 	//例２、１件ずつ処理の慎重派の例
 	}else if (params.mode=="2"){////////////////////////////////////////////////
-		new CSVReader(
-		    "text&csv/myText3.csv",//読み取るファイル
-		    ",", "\"",
-		    "MS932"//項目ごとの文字コード
+		new BinaryReader(
+		    "text&csv/myText.txt",//読み取るファイル
+		    [10,10],//項目ごとのバイト数
+		    ["MS932","MS932"],//項目ごとの文字コード
+		    20//１つレイアウトのバイト数
 		).loopAllLines(function(fields,index){//全部レコードを１件ずつ読み取る
 		    //IDで保存先を特定する。
 		    var writer= new CSVWriter("text&csv/seperated/"+fields[0]+".csv", ",", "\"", "MS932");
@@ -36,10 +38,11 @@ helloTextCSVThread_submit2.fire=function(params){
 	//例３、ロット別でIOを分ける例
 	}else if (params.mode=="3"){////////////////////////////////////////////////
 		var buffer=[];//ロット処理のバッファー
-		new CSVReader(
-		    "text&csv/myText3.csv",//読み取るファイル
-		    ",", "\"",
-		    "MS932"//項目ごとの文字コード
+		new BinaryReader(
+		    "text&csv/myText.txt",//読み取るファイル
+		    [10,10],//項目ごとのバイト数
+		    ["MS932","MS932"],//項目ごとの文字コード
+		    20//１つレイアウトのバイト数
 		).loopAllLines(function(fields,index){//全部レコードを１件ずつ読み取る
 		    buffer.push(fields);
 		    if (index % 10 == 0){//ロット数に達すかどうか判断
@@ -61,10 +64,11 @@ helloTextCSVThread_submit2.fire=function(params){
 	}else if (params.mode=="4"){////////////////////////////////////////////////
 		var buffer=[];//ロット処理のバッファー
 		var writers={};//ライターを格納するマップ
-		new CSVReader(
-		    "text&csv/myText3.csv",//読み取るファイル
-		    ",", "\"",
-		    "MS932"//項目ごとの文字コード
+		new BinaryReader(
+		    "text&csv/myText.txt",//読み取るファイル
+		    [10,10],//項目ごとのバイト数
+		    ["MS932","MS932"],//項目ごとの文字コード
+		    20//１つレイアウトのバイト数
 		).loopAllLines(function(fields,index){//全部レコードを１件ずつ読み取る
 		    buffer.push(fields);
 		    if (index % 10 == 0){//ロット数に達すかどうか判断
@@ -96,10 +100,11 @@ helloTextCSVThread_submit2.fire=function(params){
 	//例５、バッファーの配列をID別に分ける例
 	}else if (params.mode=="5"){////////////////////////////////////////////////
 		var buffer={};//ロット処理のバッファーマップ、ID別の配列を格納する
-		new CSVReader(
-		    "text&csv/myText3.csv",//読み取るファイル
-		    ",", "\"",
-		    "MS932"//項目ごとの文字コード
+		new BinaryReader(
+		    "text&csv/myText.txt",//読み取るファイル
+		    [10,10],//項目ごとのバイト数
+		    ["MS932","MS932"],//項目ごとの文字コード
+		    20//１つレイアウトのバイト数
 		).loopAllLines(function(fields,index){//全部レコードを１件ずつ読み取る
 		    //もしID別の配列がまだ存在しない場合、その配列を初期化する
 		    if (buffer[fields[0]]==null)buffer[fields[0]]=[];
