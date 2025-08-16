@@ -3,7 +3,6 @@ package efw.log;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.logging.StreamHandler;
 
 import efw.properties.PropertiesManager;
 
@@ -34,13 +33,6 @@ public final class LogManager {
 	 */
 	public static void initBatch() {
 		init();
-		//これを追加すればバッチのログはコンソール画面に表示する。
-		logger.addHandler(new StreamHandler() {
-			{
-				setOutputStream(System.out);
-				setLevel(Level.ALL);
-			}
-		});
 	}
 	/**
 	 * WEBで起動時、フレームワークのログ出力を初期化する。

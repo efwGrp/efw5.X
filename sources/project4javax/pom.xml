@@ -135,6 +135,7 @@ It is provided as open source free software.</description>
       <version>42.7.7</version>
       <optional>true</optional>
     </dependency>
+    <!-- ZIPパスワード機能 -->
     <dependency>
       <groupId>net.lingala.zip4j</groupId>
       <artifactId>zip4j</artifactId>
@@ -152,7 +153,6 @@ It is provided as open source free software.</description>
           <quiet>true</quiet>
           <outputDirectory>doc</outputDirectory>
           <show>public</show>
-          <!--<failOnError>false</failOnError>-->
         </configuration>
         <executions>
           <execution>
