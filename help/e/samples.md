@@ -16,7 +16,7 @@
 * Pdf class test ([helloworld/helloPdf.jsp](../../samples/helloworld/helloPdf.jsp))
 * Vue integration test ([helloworld/helloVue.jsp](../../samples/helloworld/helloVue.jsp))
 * Web app login and permission control ([skeletonSample](../../samples/skeletonSample))
-* Batch test ([helloworld/.../helloBatch.js])(../../samples/helloworld/WEB-INF/efw/event/helloBatch.js)
+* Batch test ([helloworld/.../helloBatch.js](../../samples/helloworld/WEB-INF/efw/event/helloBatch.js))
 
 #### Reference
 [EFW Related Articles Summary] (https://qiita.com/changkejun/items/2c7071c1468b24e7683e)

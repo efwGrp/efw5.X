@@ -16,7 +16,7 @@
 * PDF 类测试 ([helloworld/helloPdf.jsp](../../samples/helloworld/helloPdf.jsp))
 * Vue 集成测试 ([helloworld/helloVue.jsp](../../samples/helloworld/helloVue.jsp))
 * Web 应用登录和权限控制 ([skeletonSample](../../samples/skeletonSample))
-* 测试批处理 ([helloworld/.../helloBatch.js])(../../samples/helloworld/WEB-INF/efw/event/helloBatch.js)
+* 测试批处理 ([helloworld/.../helloBatch.js](../../samples/helloworld/WEB-INF/efw/event/helloBatch.js))
 
 #### 参考
 [EFW 相关文章摘要](https://qiita.com/changkejun/items/2c7071c1468b24e7683e)

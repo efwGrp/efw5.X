@@ -16,7 +16,7 @@
 * Pdfクラスのテスト ([helloworld/helloPdf.jsp](../../samples/helloworld/helloPdf.jsp))
 * Vue連携のテスト ([helloworld/helloVue.jsp](../../samples/helloworld/helloVue.jsp))
 * webアプリのログイン制御＆権限制御 ([skeletonSample](../../samples/skeletonSample))
-* バッチのテスト ([helloworld/.../helloBatch.js])(../../samples/helloworld/WEB-INF/efw/event/helloBatch.js)
+* バッチのテスト ([helloworld/.../helloBatch.js](../../samples/helloworld/WEB-INF/efw/event/helloBatch.js))
 
 #### 参考
 [EFW関連記事のまとめ] (https://qiita.com/changkejun/items/2c7071c1468b24e7683e)
