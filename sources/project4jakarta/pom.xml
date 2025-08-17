@@ -84,11 +84,13 @@ It is provided as open source free software.</description>
       <groupId>org.apache.poi</groupId>
       <artifactId>poi</artifactId>
       <version>5.4.1</version>
+      <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>org.apache.poi</groupId>
       <artifactId>poi-ooxml</artifactId>
       <version>5.4.1</version>
+      <optional>true</optional>
     </dependency>
     <!-- バーコードとQAコード -->
     <dependency>
