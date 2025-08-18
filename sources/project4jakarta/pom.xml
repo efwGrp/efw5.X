@@ -35,7 +35,7 @@ It is provided as open source free software.</description>
   </scm>
 
   <dependencies>
-	<!-- Tomcat7,8,9 -->
+	<!-- Tomcat10,11 -->
     <dependency>
       <groupId>jakarta.servlet</groupId>
       <artifactId>jakarta.servlet-api</artifactId>
@@ -181,6 +181,29 @@ It is provided as open source free software.</description>
             <goals>
               <goal>jar-no-fork</goal>
             </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>3.5.1</version>
+        <executions>
+          <execution>
+            <id>run-powershell-script</id>
+            <phase>install</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <executable>powershell.exe</executable>
+              <arguments>
+                <argument>-ExecutionPolicy</argument>
+                <argument>Bypass</argument>
+                <argument>-File</argument>
+                <argument>${project.basedir}/createZip.ps1</argument>
+              </arguments>
+            </configuration>
           </execution>
         </executions>
       </plugin>
