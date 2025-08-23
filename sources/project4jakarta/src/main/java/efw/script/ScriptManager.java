@@ -22,6 +22,10 @@ import org.graalvm.polyglot.Source;
 import org.graalvm.polyglot.Value;
 import org.graalvm.polyglot.io.IOAccess;
 
+import cn.danielw.fop.ObjectFactory;
+import cn.danielw.fop.ObjectPool;
+import cn.danielw.fop.PoolConfig;
+import cn.danielw.fop.Poolable;
 import efw.framework;
 import efw.file.FileManager;
 
@@ -49,20 +53,22 @@ public final class ScriptManager {
 
     private static Engine _se;
     
-    private static Source _sc;
-    
     private static String ID="js";
-	/**
+    
+    private static ObjectPool<ScriptContext> pool = null;
+
+/**
 	 * スクリプトエンジンを初期化する。
 	 * @throws ScriptException スクリプトエラー。
 	 */
 	public static void init() throws ScriptException{
 		try {
-			//スレッドを跨る共有egineを作成する
+			//スレッドを跨る共有egineを作成する--------
 			System.setProperty("polyglotimpl.AttachLibraryFailureAction", "ignore");
 			_se = Engine.newBuilder()
 				.option("engine.WarnInterpreterOnly", "false")
 				.build();
+			//-------------ソースを作成する------------
 			//スレッドを跨る共有ソースを作成する
 			StringBuilder sb=new StringBuilder();
 			sb.append(ScriptManager.loadResource("efw/resources/modules/EfwExtension4Js.js"));
@@ -112,9 +118,56 @@ public final class ScriptManager {
 				}
 				framework.initCLog(lg.toString());
 			}
-			_sc = Source.newBuilder(ID, sb.toString(),"efw.all.js").build();
+			Source sc = Source.newBuilder(ID, sb.toString(),"efw.all.js").build();
+			//--------------poolを作成する--------------------
+			PoolConfig config = new PoolConfig();
+			if (framework.getIsDebug()) {
+				config.setPartitionSize(1);//debug時最大10threadがあれば十分と思う。
+				config.setMaxSize(10);
+				config.setMinSize(1);
+				config.setMaxIdleMilliseconds(60 * 1000 * 5);	
+			}else{
+				config.setPartitionSize(10);//tomcatの内部threadの最大200ということ比較すると100は適切だと思う。
+				config.setMaxSize(10);
+				config.setMinSize(1);
+				config.setMaxIdleMilliseconds(60 * 1000 * 5);	
+			}
 			
-			try(Context ctx=newContext(true)){}
+			ObjectFactory<ScriptContext> factory = new ObjectFactory<ScriptContext>() {
+			    @Override public ScriptContext create() {
+					Context cxt=Context.newBuilder(ID)
+							.allowHostAccess(HostAccess.ALL)
+							.allowNativeAccess(true)
+							.allowCreateThread(true)
+							.allowIO(IOAccess.ALL)
+							.allowHostClassLookup(s -> true)
+							.allowHostClassLoading(true)
+							.allowPolyglotAccess(PolyglotAccess.ALL)
+							.allowHostAccess(HostAccess.ALL)
+							.allowCreateProcess(true)
+							.allowEnvironmentAccess(EnvironmentAccess.INHERIT)
+							.allowInnerContextOptions(true)
+							.allowValueSharing(true)
+							.allowExperimentalOptions(true)
+							.option("js.nashorn-compat", "true")
+							.option("js.ecmascript-version", "latest")
+							.engine(_se).build();
+					Value jsBindings = cxt.getBindings(ID);
+					jsBindings.putMember(KEY_EVENTFOLDER, framework.getEventFolder());
+					jsBindings.putMember(KEY_ISDEBUG, framework.getIsDebug());
+					cxt.eval(sc);
+			    	ScriptContext c=new ScriptContext(jsBindings);//コンテキストを作成する
+			    	c.doInit();
+					return c;
+			    }
+			    @Override public void destroy(ScriptContext c) {
+			    	c.doDestory();
+			    }
+			    @Override public boolean validate(ScriptContext o) {
+			        return true; 
+			    }
+			};
+			pool = new ObjectPool<ScriptContext>(config, factory);
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new ScriptException(e);
@@ -122,12 +175,63 @@ public final class ScriptManager {
 
 	}
 	/**
-	 * 新しいContextを作成する
-	 * @return Context
+	 * サーバサイトイベントを実行する。
+	 * @param req リクエストからjsイベントへの依頼情報。
+	 * @return 実行結果のJSON文字列。
 	 */
-	private static Context newContext(boolean loadSourceFlag) {
-		Context ctx;
-		ctx=Context.newBuilder(ID)
+	public static String doPost(String req){
+		try(Poolable<ScriptContext> obj = pool.borrowObject()){
+			ScriptContext c=obj.getObject();
+			return c.doPost(req);
+		}
+	}
+	/**
+	 * スクリプトエンジンを破棄する。
+	 */
+	public static void doDestroy(){
+		try {
+			pool.shutdown();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+	/**
+	 * バッチを実行する。
+	 * doPostと比較する場合、HttpServletRequestがないようにすること。
+	 * @param req バッチからjsイベントへの依頼情報。
+	 * @return 実行結果のJSON文字列。
+	 */
+	public static String doBatch(String req){
+		try(Poolable<ScriptContext> obj = pool.borrowObject()){
+			ScriptContext c=obj.getObject();
+			return c.doBatch(req);
+		}
+	}
+	/**
+	 * RESTサービスを実行する。
+	 * @param eventId RESTイベントID。
+	 * @param reqKeys RESTイベントのURLのキー。
+	 * @param httpMethod HTTPメソッド。
+	 * @param reqParams RESTイベントのURLのパラメータ。
+	 * @return 実行結果のJSON文字列。
+	 */
+	public static String doRestAPI(String eventId,String reqKeys,String httpMethod,String reqParams){
+		try(Poolable<ScriptContext> obj = pool.borrowObject()){
+			ScriptContext c=obj.getObject();
+			return c.doRestAPI(eventId,reqKeys,httpMethod,reqParams);
+		}
+	}
+	/**
+	 * パラメータマップに指定キーのパラメータが空白か否か判断する。
+	 * 指定キーのパラメータが存在しない場合、true。
+	 * 指定キーのパラメータがnullの場合、true。
+	 * 指摘キーのパラメータが""の場合、true。
+	 * @param params パラメータマップ。
+	 * @param script ロジカル計算式。
+	 * @return　判断結果。
+	 */
+	public static boolean getBool(Map<String,Object> params,String script) {
+		try(Context c=Context.newBuilder(ID)
 				.allowHostAccess(HostAccess.ALL)
 				.allowNativeAccess(true)
 				.allowCreateThread(true)
@@ -143,78 +247,12 @@ public final class ScriptManager {
 				.allowExperimentalOptions(true)
 				.option("js.nashorn-compat", "true")
 				.option("js.ecmascript-version", "latest")
-				.engine(_se).build();
-		Value jsBindings = ctx.getBindings(ID);
-		if (loadSourceFlag) {
-			jsBindings.putMember(KEY_EVENTFOLDER, framework.getEventFolder());
-			jsBindings.putMember(KEY_ISDEBUG, framework.getIsDebug());
-			ctx.eval(_sc);
-			jsBindings.getMember("efw").getMember("doInit").executeVoid();
-		}
-		return ctx;
-	}
-	/**
-	 * サーバサイトイベントを実行する。
-	 * @param req リクエストからjsイベントへの依頼情報。
-	 * @return 実行結果のJSON文字列。
-	 */
-	public static String doPost(String req){
-		try(Context ctx=newContext(true)){
-			Value jsBindings = ctx.getBindings(ID);
-			return jsBindings.getMember("efw").getMember("doPost").execute(req).asString();
-		}
-	}
-	/**
-	 * スクリプトエンジンを破棄する。
-	 */
-	public static void doDestroy(){
-		try(Context ctx=newContext(true)){
-			Value jsBindings = ctx.getBindings(ID);
-			jsBindings.getMember("efw").getMember("doDestroy").executeVoid();
-		}
-	}
-	/**
-	 * バッチを実行する。
-	 * doPostと比較する場合、HttpServletRequestがないようにすること。
-	 * @param req バッチからjsイベントへの依頼情報。
-	 * @return 実行結果のJSON文字列。
-	 */
-	public static String doBatch(String req){
-		try(Context ctx=newContext(true)){
-			Value jsBindings = ctx.getBindings(ID);
-			return jsBindings.getMember("efw").getMember("doBatch").execute(req).asString();
-		}
-	}
-	/**
-	 * RESTサービスを実行する。
-	 * @param eventId RESTイベントID。
-	 * @param reqKeys RESTイベントのURLのキー。
-	 * @param httpMethod HTTPメソッド。
-	 * @param reqParams RESTイベントのURLのパラメータ。
-	 * @return 実行結果のJSON文字列。
-	 */
-	public static String doRestAPI(String eventId,String reqKeys,String httpMethod,String reqParams){
-		try(Context ctx=newContext(true)){
-			Value jsBindings = ctx.getBindings(ID);
-			return jsBindings.getMember("efw").getMember("doRestAPI").execute(eventId,reqKeys,httpMethod,reqParams).asString();
-		}
-	}
-	/**
-	 * パラメータマップに指定キーのパラメータが空白か否か判断する。
-	 * 指定キーのパラメータが存在しない場合、true。
-	 * 指定キーのパラメータがnullの場合、true。
-	 * 指摘キーのパラメータが""の場合、true。
-	 * @param params パラメータマップ。
-	 * @param script ロジカル計算式。
-	 * @return　判断結果。
-	 */
-	public static boolean getBool(Map<String,Object> params,String script) {
-		try(Context ctx=newContext(false)){
-			Value jsBindings = ctx.getBindings(ID);
+				.engine(_se).build()){
+			Value jsBindings = c.getBindings(ID);
 			for(Map.Entry<String, Object> entry : params.entrySet()) {
 				jsBindings.putMember(entry.getKey(), entry.getValue());
 			}
-			return ctx.eval(ID,script).asBoolean();
+			return c.eval(ID,script).asBoolean();
 		}
 	}
 	/////////////////////////////////////////////////////
@@ -295,4 +333,4 @@ public final class ScriptManager {
 //https://docs.oracle.com/cd/F44923_01/jdk/21/docs/reference-manual/js/ScriptEngine/#recommendation-use-compiledscript-api
 //https://github.com/oracle/graal/issues/2147
 //https://stackoverflow.com/questions/69263736/use-import-in-javascript-being-called-from-java-program-through-graalvm
-
+//https://kagamihoge.hatenablog.com/entry/2022/12/20/212340

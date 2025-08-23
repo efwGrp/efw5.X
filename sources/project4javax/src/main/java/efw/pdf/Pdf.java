@@ -20,18 +20,18 @@ public class Pdf {
     // コンストラクタ
     protected Pdf(File templateFile) throws IOException {
     	file=File.createTempFile("efw", ".pdf");
-		pdfStamper = new com.lowagie.text.pdf.PdfStamper(
-				new com.lowagie.text.pdf.PdfReader(templateFile.getAbsolutePath()),
+		pdfStamper = new org.openpdf.text.pdf.PdfStamper(
+				new org.openpdf.text.pdf.PdfReader(templateFile.getAbsolutePath()),
 				new FileOutputStream(file)
 			);
-		acroFields = ((com.lowagie.text.pdf.PdfStamper)pdfStamper).getAcroFields();
+		acroFields = ((org.openpdf.text.pdf.PdfStamper)pdfStamper).getAcroFields();
     }
 	/**
 	 * Pdfのオブジェクトを削除する。
 	 */
 	protected void close(){
 		try {
-			((com.lowagie.text.pdf.PdfStamper)pdfStamper).close();
+			((org.openpdf.text.pdf.PdfStamper)pdfStamper).close();
 			this.file.delete();
 		} catch (IOException e) {
 			e.printStackTrace();//エラーをなげない。
@@ -50,7 +50,7 @@ public class Pdf {
 	 * @throws IOException IOエラー
 	 */
     public void save(String path) throws IOException {
-    	((com.lowagie.text.pdf.PdfStamper)pdfStamper).close();
+    	((org.openpdf.text.pdf.PdfStamper)pdfStamper).close();
 		File fileNewPdf = FileManager.get(path);
 		File filePath=new File(fileNewPdf.getParent());
 		if (!filePath.exists()) {
@@ -65,6 +65,6 @@ public class Pdf {
      * @throws IOException IOエラー
      */
     public void setField(String fieldName,String fieldValue) throws IOException {
-    	((com.lowagie.text.pdf.AcroFields)acroFields).setField(fieldName,fieldValue);
+    	((org.openpdf.text.pdf.AcroFields)acroFields).setField(fieldName,fieldValue);
     }
 }

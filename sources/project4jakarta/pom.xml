@@ -8,7 +8,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.github.efwgrp</groupId>
   <artifactId>efw</artifactId>
-  <version>5.00.000jakarta</version>
+  <version>5.00.001jakarta</version>
   <name>ESCCO-Framework</name>
   <description>"efw" is an Ajax framework for server site JavaScript designed 
 and developed by Escco Co., Ltd. using a goal-oriented method. 
@@ -59,6 +59,12 @@ It is provided as open source free software.</description>
       <artifactId>js</artifactId>
       <version>24.2.2</version>
       <type>pom</type>
+    </dependency>
+    <!-- プール -->
+    <dependency>
+      <groupId>cn.danielw</groupId>
+      <artifactId>fast-object-pool</artifactId>
+      <version>2.2.1</version>
     </dependency>
     <!-- JavaMail -->
     <dependency>
@@ -115,25 +121,25 @@ It is provided as open source free software.</description>
     <dependency>
       <groupId>com.github.librepdf</groupId>
       <artifactId>openpdf</artifactId>
-      <version>2.2.4</version>
+      <version>2.4.0</version>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>com.github.librepdf</groupId>
       <artifactId>openpdf-fonts-extra</artifactId>
-      <version>2.2.4</version>
+      <version>2.4.0</version>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>com.github.librepdf</groupId>
       <artifactId>openpdf-renderer</artifactId>
-      <version>2.2.4</version>
+      <version>2.4.0</version>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>com.github.librepdf</groupId>
       <artifactId>openpdf-html</artifactId>
-      <version>2.2.4</version>
+      <version>2.4.0</version>
       <optional>true</optional>
     </dependency>
     <!-- postgresqlのコピーin/out -->
@@ -202,6 +208,8 @@ It is provided as open source free software.</description>
                 <argument>Bypass</argument>
                 <argument>-File</argument>
                 <argument>${project.basedir}/createZip.ps1</argument>
+                <argument>-Version</argument>
+                <argument>${project.version}</argument>
               </arguments>
             </configuration>
           </execution>

@@ -9,6 +9,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
+//openpdfのクラスをimportしないように注意。
+//PdfManagerがframeworkから呼び出されるから。
 import efw.PdfFileIsNotLegalException;
 import efw.framework;
 import efw.file.FileManager;
@@ -81,14 +83,14 @@ public class PdfManager {
 	    for(int i=0;i<lst.length;i++) {
 	    	if (lst[i].getName().toLowerCase().endsWith(".ttf")) {//||lst[i].getName().toLowerCase().endsWith(".otf")
 		    	String name= org.openpdf.pdf.TrueTypeUtil.getFamilyNames(
-		    			com.lowagie.text.pdf.BaseFont.createFont(lst[i].getAbsolutePath(),com.lowagie.text.pdf.BaseFont.IDENTITY_H,false)
+		    			org.openpdf.text.pdf.BaseFont.createFont(lst[i].getAbsolutePath(),org.openpdf.text.pdf.BaseFont.IDENTITY_H,false)
 		    		).toArray(new String[0])[0];
 		    	myFonts.add(name);
 	    	}else if (lst[i].getName().toLowerCase().endsWith(".ttc")) {
-	    		String[] fnts = com.lowagie.text.pdf.BaseFont.enumerateTTCNames(lst[i].getAbsolutePath());
+	    		String[] fnts = org.openpdf.text.pdf.BaseFont.enumerateTTCNames(lst[i].getAbsolutePath());
 		    	for (int j=0;j<fnts.length;j++) {
 			    	String name= org.openpdf.pdf.TrueTypeUtil.getFamilyNames(
-			    			com.lowagie.text.pdf.BaseFont.createFont(lst[i].getAbsolutePath()+","+j,com.lowagie.text.pdf.BaseFont.IDENTITY_H,false)
+			    			org.openpdf.text.pdf.BaseFont.createFont(lst[i].getAbsolutePath()+","+j,org.openpdf.text.pdf.BaseFont.IDENTITY_H,false)
 			    		).toArray(new String[0])[0];
 			    	myFonts.add(name);
 		    	}
@@ -112,7 +114,7 @@ public class PdfManager {
 		    File lst[]=fontsFolder.listFiles();
 		    for(int i=0;i<lst.length;i++) {
 		    	try {
-				    renderer.getFontResolver().addFont(lst[i].getAbsolutePath(),com.lowagie.text.pdf.BaseFont.IDENTITY_H,false);
+				    renderer.getFontResolver().addFont(lst[i].getAbsolutePath(),org.openpdf.text.pdf.BaseFont.IDENTITY_H,false);
 		    	}catch(Exception e) {
 		    		//もしフォントフォルダに不要ファイルがある場合に備える
 		    	}

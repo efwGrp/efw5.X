@@ -1,5 +1,11 @@
+param (
+    [string]$Version
+)
+Write-Host "The version from pom.xml is: $Version"
+
 $prj = "efw5x"
-$ver = "5.00.000jakarta"
+$ver = $Version
+
 cd .\target
 copy-item ../pom.xml efw-$ver.pom
 
