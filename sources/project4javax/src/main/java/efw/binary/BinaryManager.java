@@ -16,7 +16,7 @@ import efw.file.FileManager;
  * @author kejun.chang
  *
  */
-public class BinaryManager {
+public final class BinaryManager {
 	/**
 	 * ダミーコンストラクタ
 	 */

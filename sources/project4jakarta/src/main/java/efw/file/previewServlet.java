@@ -21,7 +21,7 @@ import jakarta.servlet.http.HttpSession;
  * @author Chang Kejun
  */
 @WebServlet(name="previewServlet",urlPatterns={"/previewServlet"})
-public class previewServlet extends HttpServlet {
+public final class previewServlet extends HttpServlet {
 	/**
 	 * ダミーコンストラクタ
 	 */

@@ -13,7 +13,7 @@ public final class PropertiesManager {
 	/**
 	 * ダミーコンストラクタ
 	 */
-	public PropertiesManager(){}
+	public PropertiesManager(){super();}
 	
 	/**
 	 * WEBアプリ用プロパティファイル名。

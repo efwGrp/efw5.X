@@ -18,7 +18,7 @@ import efw.file.FileManager;
 /**
  * Pdfファイルを取り扱うクラス。
  */
-public class PdfManager {
+public final class PdfManager {
 	/**
 	 * ダミーコンストラクタ
 	 */

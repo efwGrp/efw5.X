@@ -9,7 +9,7 @@ import efw.file.FileManager;
 /**
  * Pdf穴埋め処理用クラス。
  */
-public class Pdf {
+public final class Pdf {
 	/**
 	 * PDFBoxのPDDocumentのインスタンス。
 	 * 特別な処理を行いたい場合利用できる。

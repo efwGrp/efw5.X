@@ -256,7 +256,9 @@ public final class framework {
 		ScriptManager.doDestroy();
 	}
 	/////////////////////////////////////////////////////////////////////////////////////////////
-	
+	/**
+	 * 初期化成功フラグ
+	 */
 	private static boolean initSuccessFlag=false;
 	/**
 	 * 初期化成功フラグを取得する。
@@ -272,6 +274,9 @@ public final class framework {
 	public static void resetInitSuccessFlag(){
 		framework.initSuccessFlag=false;
 	}
+	/**
+	 * イベントフォルダ
+	 */
 	private static String eventFolder="/WEB-INF/efw/event";
 	/**
 	 * イベントフォルダを取得する。
@@ -282,7 +287,9 @@ public final class framework {
 	public static String getEventFolder() {
 		return eventFolder;
 	}
-
+	/**
+	 * SQLフォルダ
+	 */
 	private static String sqlFolder="/WEB-INF/efw/sql";
 	/**
 	 * SQLフォルダを取得する。
@@ -293,7 +300,9 @@ public final class framework {
 	public static String getSqlFolder() {
 		return sqlFolder;
 	}
-
+	/**
+	 * ストレジフォルダ
+	 */
 	private static String storageFolder="/WEB-INF/efw/storage";
 	/**
 	 * ストレジフォルダを取得する。
@@ -304,7 +313,9 @@ public final class framework {
 	public static String getStorageFolder() {
 		return storageFolder;
 	}
-
+	/**
+	 * メールフォルダ
+	 */
 	private static String mailFolder="/WEB-INF/efw/mail";
 	/**
 	 * メールフォルダを取得する。
@@ -315,7 +326,9 @@ public final class framework {
 	public static String getMailFolder() {
 		return mailFolder;
 	}
-
+	/**
+	 * 多国語フォルダ
+	 */
 	private static String i18nFolder="/WEB-INF/efw/i18n";
 	/**
 	 * 多国語フォルダを取得する。
@@ -326,7 +339,9 @@ public final class framework {
 	public static String getI18nFolder() {
 		return i18nFolder;
 	}
-
+	/**
+	 * フォーマットRounder
+	 */
 	private static String formatRounder="HALF_EVEN";
 	/**
 	 * フォーマットRounderを取得する。
@@ -335,7 +350,9 @@ public final class framework {
 	public static String getFormatRounder() {
 		return formatRounder;
 	}
-
+	/**
+	 * デフォルトjdbcリソース名
+	 */
 	private static String jdbcResourceName="jdbc/efw";
 	/**
 	 * デフォルトjdbcリソース名を取得する。
@@ -346,6 +363,9 @@ public final class framework {
 	public static String getJdbcResourceName() {
 		return jdbcResourceName;
 	}
+	/**
+	 * デフォルトのメールリソース名
+	 */
     private static String mailResourceName="mail/efw";
     /**
      * デフォルトのメールリソース名を取得する。
@@ -364,7 +384,9 @@ public final class framework {
      * コンテンツタイプ、「application/json;charset=UTF-8」に固定。
      */
 	public static final String CONTENT_TYPE = "application/json;charset=UTF-8";
-
+	/**
+	 * システムエラー画面URL
+	 */
 	private static String systemErrorUrl="error.jsp";
 	/**
 	 * システムエラー画面URLを取得する。
