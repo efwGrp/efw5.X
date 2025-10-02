@@ -1,17 +1,45 @@
 /**** efw5.X Copyright 2025 efwGrp ****/
 package efw.script;
 
+import org.graalvm.polyglot.Context;
+import org.graalvm.polyglot.Source;
 import org.graalvm.polyglot.Value;
+
+import efw.framework;
 /**
  * GraaljsのContextのラッパー
  * @author Chang Kejun
  */
 public class ScriptContext {
 	/**
-	 * コンストラクタ
-	 * @param jsBindings GraaljsのContextのjsBindings
+	 * コンテキストのハンドル
 	 */
-	protected ScriptContext(Value jsBindings) {
+	private Context _context=null;
+	/**
+	 * 言語IDの固定値
+	 */
+	private static String ID="js";
+	/**
+     * スクリプトエンジンに渡すイベントJavaScriptファイルの格納パスのキー。
+     * 「_eventfolder」に固定。
+     */
+    private static final String KEY_EVENTFOLDER="_eventfolder";
+    /**
+     * スクリプトエンジンに渡すデバッグモード制御フラグのキー。
+     * 「_isdebug」に固定。
+     */
+    private static final String KEY_ISDEBUG="_isdebug";
+	/**
+	 * コンストラクタ
+	 * @param cxt GraaljsのContext
+	 * @param sc 初期化のソース
+	 */
+	protected ScriptContext(Context cxt,Source sc) {
+		_context=cxt;
+		Value jsBindings = cxt.getBindings(ID);
+		jsBindings.putMember(KEY_EVENTFOLDER, framework.getEventFolder());
+		jsBindings.putMember(KEY_ISDEBUG, framework.getIsDebug());
+		cxt.eval(sc);
 		_doInit=jsBindings.getMember("efw").getMember("doInit");
 		_doDestroy=jsBindings.getMember("efw").getMember("doDestroy");
 		_doPost=jsBindings.getMember("efw").getMember("doPost");
@@ -37,7 +65,7 @@ public class ScriptContext {
 	 */
 	public void doDestory() {
 		_doDestroy.executeVoid();
-		_doDestroy.getContext().close();
+		_context.close();
 	}
 	/**
 	 * JSポスト関数のハンドル

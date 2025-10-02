@@ -39,17 +39,6 @@ public final class ScriptManager {
 	 * ダミーコンストラクタ
 	 */
 	public ScriptManager(){super();}
-	
-	/**
-     * スクリプトエンジンに渡すイベントJavaScriptファイルの格納パスのキー。
-     * 「_eventfolder」に固定。
-     */
-    private static final String KEY_EVENTFOLDER="_eventfolder";
-    /**
-     * スクリプトエンジンに渡すデバッグモード制御フラグのキー。
-     * 「_isdebug」に固定。
-     */
-    private static final String KEY_ISDEBUG="_isdebug";
 
     private static Engine _se;
     
@@ -65,6 +54,7 @@ public final class ScriptManager {
 		try {
 			//スレッドを跨る共有egineを作成する--------
 			System.setProperty("polyglotimpl.AttachLibraryFailureAction", "ignore");
+			System.setProperty("polyglotimpl.DisableMultiReleaseCheck", "true");//graaljs25から追加
 			_se = Engine.newBuilder()
 				.option("engine.WarnInterpreterOnly", "false")
 				.build();
@@ -152,11 +142,7 @@ public final class ScriptManager {
 							.option("js.nashorn-compat", "true")
 							.option("js.ecmascript-version", "latest")
 							.engine(_se).build();
-					Value jsBindings = cxt.getBindings(ID);
-					jsBindings.putMember(KEY_EVENTFOLDER, framework.getEventFolder());
-					jsBindings.putMember(KEY_ISDEBUG, framework.getIsDebug());
-					cxt.eval(sc);
-			    	ScriptContext c=new ScriptContext(jsBindings);//コンテキストを作成する
+			    	ScriptContext c=new ScriptContext(cxt,sc);//コンテキストを作成する
 			    	c.doInit();
 					return c;
 			    }
