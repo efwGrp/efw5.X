@@ -90,10 +90,11 @@ class Efw extends Debuggable{
 		eventId=eventId.replace(/[<>.\\\/]/g,"");//to delete forbidden characters.
 	
 		//イベント取得できない場合、エラーを画面に出す。該当エラーはよく発生する。
-		let ev=event.get(eventId);
-		//if event is not loaded or it is in debug mode
-		if (ev==null){
+		let ev;
+		if (_isdebug){
 			ev=event.load(eventId);
+		}else{
+			ev=event.get(eventId);
 		}
 		if (ev==null){
 			let result=(new Result())
@@ -213,10 +214,12 @@ class Efw extends Debuggable{
 		let params = reqJson.params; // get params from json object
 		let lang = reqJson.lang; // get lang from json object
 		try{
-			let ev=event.get(eventId);
-			//if event is not loaded or it is in debug mode
-			if (ev==null){
+			//イベント取得できない場合、エラーを画面に出す。該当エラーはよく発生する。
+			let ev;
+			if (_isdebug){
 				ev=event.load(eventId);
+			}else{
+				ev=event.get(eventId);
 			}
 			if (ev==null){
 				return;//Event Is Not Exists this error will show trace info by load function.
@@ -273,10 +276,11 @@ class Efw extends Debuggable{
 		let lang = params==null?"en":params.lang; // get lang from json object
 	
 		//イベント取得できない場合、エラーを画面に出す。該当エラーはよく発生する。
-		let ev=event.get(eventId);
-		//if event is not loaded or it is in debug mode
-		if (ev==null){
+		let ev;
+		if (_isdebug){
 			ev=event.load(eventId);
+		}else{
+			ev=event.get(eventId);
 		}
 		if (ev==null){
 			Packages.efw.framework.getResponse().setStatus(java.net.HttpURLConnection.HTTP_NOT_FOUND);//404 Not Found 見つからない

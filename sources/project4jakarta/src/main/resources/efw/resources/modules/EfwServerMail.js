@@ -16,14 +16,20 @@ class EfwServerMail extends Debuggable{
 	 * @param {Object}
 	 *            params: required<br>
 	 *            {param1:value1,param2:value2,...}<br>
+	 * @param {Boolean}
+	 *            inBackground: optional<br>
 	 */
-	static send (groupId, mailId, params) {
+	static send (groupId, mailId, params, inBackground) {
 		let hashMapParams = new java.util.HashMap();
 		for ( let key in params) {
 			let vl = "" + params[key];
 			hashMapParams.put(key, vl);
 		}
-		Packages.efw.mail.MailManager.send(groupId, mailId, hashMapParams);
+		if (inBackground){
+			Packages.efw.mail.MailManager.sendInBackground(groupId, mailId, hashMapParams);
+		}else{
+			Packages.efw.mail.MailManager.send(groupId, mailId, hashMapParams);
+		}
 	}
 }
 ///////////////////////////////////////////////////////////////////////////////

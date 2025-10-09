@@ -188,14 +188,23 @@ class EfwServer extends Debuggable{
 							continue;
 						}
 						if (accept != null) { // check file ext
-							let exts = accept.split(",");
+							let exts = accept.toLowerCase().split(",");
+							let paramAry=param.toLowerCase().split("|");
 							let isAccepted = false;
-							for (let i = 0; i < exts.length; i++) {
-								if (param.substr(param.length - exts[i].length)
-										.toLowerCase() == exts[i].toLowerCase()) {
-									isAccepted = true;
-									break;
+							for (let p=0;p<paramAry.length;p++){
+								isAccepted = false;
+								for (let i = 0; i < exts.length; i++) {
+									let ext=exts[i];
+									let flnm=paramAry[p];
+									if (
+										flnm.toLowerCase().search(new RegExp("."+ext+"\\|"))>0	//to do for multi file upload
+										||flnm.toLowerCase().search(new RegExp("."+ext+"$"))>0	//
+									){
+										isAccepted = true;
+										break;
+									}
 								}
+								if (!isAccepted) break;
 							}
 							if (!isAccepted) {
 								let message = messages.get("NotAcceptMessage",lang);

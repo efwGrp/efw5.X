@@ -255,9 +255,14 @@ class EfwClient{
 								if (vl != null && vl != "") {
 									if (this.#pickupParams_uploadformdata == null)
 										this.#pickupParams_uploadformdata = new FormData();
-									this.#pickupParams_uploadformdata
-										.append("filename", $(element[0]).prop(
-											"files")[0]);
+									//multi files
+									var files=$(element[0]).prop("files");
+									var vls=[];
+									for(var i=0;i<files.length;i++){
+										this.#pickupParams_uploadformdata.append("filename", files[i]);
+										vls.push(files[i].name);
+									}
+									vl=vls.join("|");//to support multi-files in one file tag
 								}
 							}
 						} else if (tgNm == "IMG") {

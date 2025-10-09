@@ -31,9 +31,12 @@ class EfwServerEvent extends Debuggable{
 		}
 		let result=new Result();
 		if (server==undefined){
-			let ev=EfwServerEvent.get(eventId);
-			if (ev==null){
+			let ev;
+			//in debug mode, load event every time.
+			if (_isdebug){
 				ev=EfwServerEvent.load(eventId);
+			}else{
+				ev=EfwServerEvent.get(eventId);
 			}
 			result=ev.fire(params);
 		}else{
@@ -87,10 +90,7 @@ class EfwServerEvent extends Debuggable{
 		}
 		//--------------------
 		try {
-			//in debug mode ,if the event hasnot be loaded, load it.
-			if(!EfwServerEvent.get(eventId) && _isdebug){
-				load(_eventfolder + "/" + eventId + ".js");
-			}
+			load(_eventfolder + "/" + eventId + ".js");
 		}catch(e){
 			if (e instanceof Error)e=""+e;
 			if (loadingGlobal){
