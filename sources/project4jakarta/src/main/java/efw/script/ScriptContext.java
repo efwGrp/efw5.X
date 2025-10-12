@@ -45,6 +45,7 @@ public class ScriptContext {
 		_doPost=jsBindings.getMember("efw").getMember("doPost");
 		_doBatch=jsBindings.getMember("efw").getMember("doBatch");
 		_doRestAPI=jsBindings.getMember("efw").getMember("doRestAPI");
+		_callFunction=jsBindings.getMember("efw").getMember("callFunction");
 	}
 	/**
 	 * JS初期化関数のハンドル
@@ -106,5 +107,18 @@ public class ScriptContext {
 	 */
 	public String doRestAPI(String eventId,String reqKeys,String httpMethod,String reqParams) {
 		return _doRestAPI.execute(eventId,reqKeys,httpMethod,reqParams).asString();
+	}
+	/**
+	 * JS指定関数のハンドル
+	 */
+	private Value _callFunction=null;
+	/**
+	 * 指定関数を実行する。
+	 * @param funcNm 関数名。
+	 * @param reqParams パラメータ。
+	 * @return 実行結果の文字列。
+	 */
+	public String callFunction(String funcNm,String reqParams){
+		return _callFunction.execute(funcNm,reqParams).asString();
 	}
 }

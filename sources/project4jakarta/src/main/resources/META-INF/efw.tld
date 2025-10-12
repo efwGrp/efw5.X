@@ -73,6 +73,7 @@
     <attribute><name>readonly</name><rtexprvalue>true</rtexprvalue></attribute>
     <attribute><name>protected</name><rtexprvalue>true</rtexprvalue></attribute>
     <attribute><name>isAbs</name><rtexprvalue>true</rtexprvalue></attribute>
+    <attribute><name>saveLogFunc</name><rtexprvalue>true</rtexprvalue></attribute>
   </tag>
   <tag>
     <name>ELFINDER</name>
@@ -87,6 +88,7 @@
     <attribute><name>readonly</name><rtexprvalue>true</rtexprvalue></attribute>
     <attribute><name>protected</name><rtexprvalue>true</rtexprvalue></attribute>
     <attribute><name>isAbs</name><rtexprvalue>true</rtexprvalue></attribute>
+    <attribute><name>saveLogFunc</name><rtexprvalue>true</rtexprvalue></attribute>
   </tag>
   <tag>
     <name>elfinder</name>
@@ -101,6 +103,7 @@
     <attribute><name>readonly</name><rtexprvalue>true</rtexprvalue></attribute>
     <attribute><name>protected</name><rtexprvalue>true</rtexprvalue></attribute>
     <attribute><name>isAbs</name><rtexprvalue>true</rtexprvalue></attribute>
+    <attribute><name>saveLogFunc</name><rtexprvalue>true</rtexprvalue></attribute>
   </tag>
   <tag>
     <name>elFinder</name>
@@ -115,6 +118,7 @@
     <attribute><name>readonly</name><rtexprvalue>true</rtexprvalue></attribute>
     <attribute><name>protected</name><rtexprvalue>true</rtexprvalue></attribute>
     <attribute><name>isAbs</name><rtexprvalue>true</rtexprvalue></attribute>
+    <attribute><name>saveLogFunc</name><rtexprvalue>true</rtexprvalue></attribute>
   </tag>
 
   <tag>

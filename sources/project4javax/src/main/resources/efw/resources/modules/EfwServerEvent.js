@@ -81,6 +81,8 @@ class EfwServerEvent extends Debuggable{
 	 * @returns {EventInfo}
 	 */
 	static load (eventId,loadingGlobal){
+		//elfinder_cmds is load from jar
+		if (eventId=="elfinder_cmds") return EfwServerEvent.get(eventId);
 		//if the global.js is not exists,warning log.
 		if (loadingGlobal){
 			if (!absfile.exists(_eventfolder + "/" + eventId + ".js")){

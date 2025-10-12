@@ -80,6 +80,7 @@ public final class ScriptManager {
 			sb.append(ScriptManager.loadResource("efw/resources/elfinder/elfinder_downloadFileList.js"));
 			sb.append(ScriptManager.loadResource("efw/resources/elfinder/elfinder_file.js"));
 			sb.append(ScriptManager.loadResource("efw/resources/elfinder/elfinder_preview.js"));
+			sb.append(ScriptManager.loadResource("efw/resources/elfinder/elfinder_upload.js"));
 
 			sb.append(ScriptManager.loadResource("efw/resources/modules/EfwServer.js"));//EfwServerはEfwの前に置く必要。
 			sb.append(ScriptManager.loadResource("efw/resources/modules/Efw.js"));
@@ -312,6 +313,20 @@ public final class ScriptManager {
 			}
 		}
 		return (Semaphore)ret.get("semaphore");
+	}
+	/**
+	 * 指定関数を実行する。
+	 * @param funcNm 関数名。
+	 * @param reqParams パラメータ。
+	 * @return 実行結果の文字列。
+	 * @throws NoSuchMethodException 関数なしエラー。
+	 * @throws ScriptException スクリプトエラー。
+	 */
+	public static String callFunction(String funcNm,String reqParams) throws NoSuchMethodException, ScriptException{
+		try(Poolable<ScriptContext> obj = pool.borrowObject()){
+			ScriptContext c=obj.getObject();
+			return c.callFunction(funcNm, reqParams);
+		}
 	}
 }
 //https://docs.oracle.com/cd/F44923_01/jdk/21/docs/reference-manual/js/ScriptEngine/#prerequisite

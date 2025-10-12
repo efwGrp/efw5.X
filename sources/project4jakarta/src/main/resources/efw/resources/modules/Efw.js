@@ -324,6 +324,35 @@ class Efw extends Debuggable{
 			Packages.efw.db.DatabaseManager.closeAll();
 		}
 	}
+	/**
+	 * The callFunction<br>
+	 * It will be called by upload
+	 * 
+	 * @param funcNm:
+	 *            function name
+	 * @param reqParams:
+	 *            JSON String params
+	 * @returns: the return of function
+	 *  
+	 */
+	static callFunction(funcNm,reqParams){
+		try{
+			var g = new Function('return this')();
+			var func=g[funcNm];
+			var paramsJson = JSON.parse(reqParams); // parse request string to json object
+			db.commitAll();
+			return ""+func(paramsJson);
+		}catch(e){
+			db.rollbackAll();
+			throw e;
+		}finally{
+			Packages.efw.db.DatabaseManager.closeAll();
+			Packages.efw.excel.ExcelManager.closeAll();
+			Packages.efw.csv.CSVManager.closeAll();
+			Packages.efw.binary.BinaryManager.closeAll();
+			Packages.efw.pdf.PdfManager.closeAll();
+		}
+	}
 }
 ///////////////////////////////////////////////////////////////////////////////
 const efw = Efw;

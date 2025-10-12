@@ -60,6 +60,13 @@ class ElfinderEvent{
 				}
 			}
 		}
+		var sessionSaveLogFunc=session.get("EFW_ELFINDER_SAVELOGFUNC_"+id)+"";
+		if (sessionSaveLogFunc!=""&&sessionSaveLogFunc!=null){
+			var g = new Function('return this')();
+			var func=g[sessionSaveLogFunc];
+			//try to call the savelog function here
+			if (func) func(params);
+		}
 		return null;
 	}
 	///////////////////////////////////////////////////////////////////////////
